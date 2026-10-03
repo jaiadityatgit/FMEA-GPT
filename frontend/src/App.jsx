@@ -106,22 +106,19 @@ export default function App() {
 
   const [fmeaReport, setFmeaReport] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('overview'); // overview | worksheet | criticality | evidence | cil | sources | telemetry | exports
-  const [heroView, setHeroView] = useState('engine'); // 'engine' | 'aircraft'
+  const [activeTab, setActiveTab] = useState('overview');
+  const [heroView, setHeroView] = useState('engine');
   const [activeHotspot, setActiveHotspot] = useState(null);
 
-  // Search & RAG
   const [searchQuery, setSearchQuery] = useState('');
   const [ragQuery, setRagQuery] = useState('MIL-STD-1629A severity categories');
   const [ragResults, setRagResults] = useState([]);
   const [ragSearching, setRagSearching] = useState(false);
 
-  // System Health & Table State
   const [health, setHealth] = useState(null);
   const [expandedRows, setExpandedRows] = useState({});
 
   useEffect(() => {
-    // Initial health check & load sample FMEA
     fetch('/api/health')
       .then(res => res.json())
       .then(data => setHealth(data))
@@ -264,9 +261,6 @@ export default function App() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw' }}>
-      {/* ===================================================================
-          1. TOP BAR
-          =================================================================== */}
       <header className="top-header">
         <div className="brand-section">
           <div className="brand-mark">
@@ -283,7 +277,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* Global Search */}
         <div className="header-search-wrap">
           <svg className="header-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="11" cy="11" r="8" />
@@ -298,7 +291,6 @@ export default function App() {
           <span className="header-shortcut-badge">CTRL+K</span>
         </div>
 
-        {/* Station Status & Profile */}
         <div className="header-controls">
           <div className="status-cluster" title="Production ChromaDB Knowledge Store Active">
             <span className="status-dot-active"></span>
@@ -315,11 +307,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* ===================================================================
-          2. WORKSTATION LAYOUT (NAV RAIL + MAIN WORKSPACE)
-          =================================================================== */}
       <div className="app-layout">
-        {/* Left Navigation Rail */}
         <nav className="nav-rail">
           <button
             className={`nav-rail-item ${activeTab === 'overview' ? 'active' : ''}`}
@@ -426,13 +414,8 @@ export default function App() {
           </button>
         </nav>
 
-        {/* =================================================================
-            MAIN WORKSPACE VIEWPORT
-            ================================================================= */}
         <main className="workspace">
-          {/* Top Instrumentation Readout Bar (4 Metrics) */}
           <section className="instrumentation-bar">
-            {/* 1. Severity Rating */}
             <div className="instrument-meter severity">
               <div className="meter-label-row">
                 <span className="meter-label">Severity Classification</span>
@@ -444,7 +427,6 @@ export default function App() {
               <span className="meter-subtext">CRITICAL HAZARD CATEGORY</span>
             </div>
 
-            {/* 2. Criticality Assessment */}
             <div className="instrument-meter criticality">
               <div className="meter-label-row">
                 <span className="meter-label">Criticality Analysis</span>
@@ -456,7 +438,6 @@ export default function App() {
               <span className="meter-subtext">AUDITABLE LOSS POTENTIAL</span>
             </div>
 
-            {/* 3. Evidence Coverage */}
             <div className="instrument-meter evidence">
               <div className="meter-label-row">
                 <span className="meter-label">Evidence Grounding</span>
@@ -472,7 +453,6 @@ export default function App() {
               </span>
             </div>
 
-            {/* 4. Engineering Review */}
             <div className="instrument-meter review">
               <div className="meter-label-row">
                 <span className="meter-label">Engineering Review</span>
@@ -488,7 +468,6 @@ export default function App() {
               </span>
             </div>
 
-            {/* Quick Export Controls */}
             <div className="meter-actions">
               <button
                 className="btn-secondary"
@@ -518,12 +497,8 @@ export default function App() {
             </div>
           </section>
 
-          {/* =================================================================
-              VIEW 1: OVERVIEW (HERO COCKPIT DASHBOARD)
-              ================================================================= */}
           {activeTab === 'overview' && (
             <div>
-              {/* Evidence Gap Warning Banner if active */}
               {isEvidenceGap && (
                 <div className="corpus-gap-panel">
                   <div className="corpus-gap-title">
@@ -544,9 +519,7 @@ export default function App() {
                 </div>
               )}
 
-              {/* Dominant Hero Component Panel */}
               <div className="hero-component-panel">
-                {/* Visual Area */}
                 <div className="hero-visual-area">
                   <img
                     className="hero-bg-image"
@@ -555,7 +528,6 @@ export default function App() {
                   />
                   <div className="hero-overlay-gradient"></div>
 
-                  {/* Header Overlay Tags & View Switch */}
                   <div className="hero-header-overlay">
                     <div className="hero-tags">
                       <span className="hero-tag orange">
@@ -588,7 +560,6 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* Interactive Hotspot Pins (Only on engine cutaway view) */}
                   {heroView === 'engine' && currentPreset.hotspots.map(h => (
                     <div
                       key={h.id}
@@ -608,7 +579,6 @@ export default function App() {
                     </div>
                   ))}
 
-                  {/* Footer Titles */}
                   <div className="hero-footer-overlay">
                     <div className="hero-title-group">
                       <h1>{comp?.component_name || componentName}</h1>
@@ -617,7 +587,6 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Right Specifications Sidebar */}
                 <div className="hero-specs-sidebar">
                   <div className="spec-section-title">
                     <span>Engineering Specs</span>
@@ -687,7 +656,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Aerospace Component Preset & Input Controls */}
               <div className="controls-panel">
                 <div className="controls-header-row">
                   <span className="controls-title">Quick Component Presets & Synthesis Launcher</span>
@@ -762,7 +730,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Evidence Coverage Instrument (Always visible on Overview) */}
               {cov && (
                 <div className="evidence-instrument">
                   <div className="instrument-header">
@@ -819,9 +786,6 @@ export default function App() {
             </div>
           )}
 
-          {/* =================================================================
-              VIEW 2: MIL-STD-1629A WORKSHEET (ENGINEERING SPREADSHEET)
-              ================================================================= */}
           {activeTab === 'worksheet' && (
             <div style={{ padding: '0 0 24px 0' }}>
               {isEvidenceGap ? (
@@ -924,21 +888,19 @@ export default function App() {
                                 </td>
                               </tr>
 
-                              {/* Expanded Provenance Record Row */}
                               {isExpanded && (
                                 <tr>
                                   <td colSpan={11} className="provenance-expanded-cell">
                                     <div className="provenance-dossier">
                                       <div className="dossier-top">
                                         <span className="dossier-title">
-                                          PROVENANCE RECORDS & GROUNDED CITATIONS // {fm.mode_id} ({fm.failure_mode})
+                                          PROVENANCE RECORDS & GROUNDED CITATIONS
                                         </span>
                                         <span className={`eng-badge ${getBadgeClass(fm.mode_status)}`}>
                                           GROUNDING STATUS: {fm.mode_status?.toUpperCase() || "SUPPORTED"}
                                         </span>
                                       </div>
 
-                                      {/* Rationale Grid */}
                                       <div className="dossier-rationales-grid">
                                         <div className="rationale-block">
                                           <span className="rationale-title">MIL-STD-1629A § 4.4.3 Severity Justification</span>
@@ -955,7 +917,6 @@ export default function App() {
                                         </div>
                                       </div>
 
-                                      {/* Verbatim Source Passages */}
                                       <div className="passages-grid">
                                         {fm.evidence_records && fm.evidence_records.length > 0 ? (
                                           fm.evidence_records.map((er, i) => (
@@ -1006,9 +967,6 @@ export default function App() {
             </div>
           )}
 
-          {/* =================================================================
-              VIEW 3: TASK 102 CRITICALITY & RISK ANALYSIS
-              ================================================================= */}
           {activeTab === 'criticality' && (
             <div style={{ padding: '0 20px 24px 20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div className="table-panel" style={{ margin: 0 }}>
@@ -1048,7 +1006,6 @@ export default function App() {
                     ))}
                   </div>
 
-                  {/* Quarantined Legacy RPN Warning */}
                   <div className="legacy-warning-box">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0 }}>
                       <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
@@ -1060,7 +1017,6 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* Legacy RPN Rankings */}
                   <div className="rpn-meter-list">
                     {modes.map(fm => {
                       const pct = Math.min(100, (fm.rpn / 200) * 100);
@@ -1085,9 +1041,6 @@ export default function App() {
             </div>
           )}
 
-          {/* =================================================================
-              VIEW 4: EVIDENCE COVERAGE & REASONING TRACE
-              ================================================================= */}
           {activeTab === 'evidence' && (
             <div style={{ padding: '0 20px 24px 20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div className="trace-panel" style={{ margin: 0 }}>
@@ -1095,7 +1048,6 @@ export default function App() {
                   Auditable LangGraph Diagnostic Execution Trace
                 </div>
 
-                {/* Execution Route Bar */}
                 {trace && (
                   <div className="chain-route-bar">
                     <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 700 }}>EXECUTION ROUTE:</span>
@@ -1118,7 +1070,6 @@ export default function App() {
                   <div><b>Heuristics Injected:</b> 0 (Strict Invariant)</div>
                 </div>
 
-                {/* Verified Claims List */}
                 <div className="verification-list">
                   {trace?.verification_results && trace.verification_results.map((vr, idx) => (
                     <div key={idx} className="verification-card">
@@ -1158,9 +1109,6 @@ export default function App() {
             </div>
           )}
 
-          {/* =================================================================
-              VIEW 5: CRITICAL ITEMS LIST (CIL)
-              ================================================================= */}
           {activeTab === 'cil' && (
             <div style={{ padding: '0 20px 24px 20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div className="table-panel" style={{ margin: 0 }}>
@@ -1203,9 +1151,6 @@ export default function App() {
             </div>
           )}
 
-          {/* =================================================================
-              VIEW 6: REGULATORY SOURCES & STANDARDS EXPLORER
-              ================================================================= */}
           {activeTab === 'sources' && (
             <div style={{ padding: '0 20px 24px 20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div className="table-panel" style={{ margin: 0 }}>
@@ -1249,7 +1194,6 @@ export default function App() {
                     ))}
                   </div>
 
-                  {/* Indexed Regulatory Authorities */}
                   <div style={{ marginTop: '16px', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
                     <span className="controls-title" style={{ display: 'block', marginBottom: '10px' }}>
                       Audited Certification Standards in Repository
@@ -1278,9 +1222,6 @@ export default function App() {
             </div>
           )}
 
-          {/* =================================================================
-              VIEW 7: DIGITAL TWIN TELEMETRY SCHEMA
-              ================================================================= */}
           {activeTab === 'telemetry' && (
             <div style={{ padding: '0 20px 24px 20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div className="table-panel" style={{ margin: 0 }}>
@@ -1333,9 +1274,6 @@ export default function App() {
             </div>
           )}
 
-          {/* =================================================================
-              VIEW 8: EXPORTS HUB
-              ================================================================= */}
           {activeTab === 'exports' && (
             <div style={{ padding: '0 0 24px 0' }}>
               <div className="table-toolbar" style={{ margin: '0 20px 16px 20px', borderRadius: 'var(--radius-sm)' }}>
@@ -1348,7 +1286,6 @@ export default function App() {
               </div>
 
               <div className="exports-grid">
-                {/* 1. Excel */}
                 <div className="export-card">
                   <div className="export-card-header">
                     <span className="export-card-type">Spreadsheet (.xlsx)</span>
@@ -1367,7 +1304,6 @@ export default function App() {
                   </button>
                 </div>
 
-                {/* 2. PDF */}
                 <div className="export-card">
                   <div className="export-card-header">
                     <span className="export-card-type">Document (.pdf)</span>
@@ -1386,7 +1322,6 @@ export default function App() {
                   </button>
                 </div>
 
-                {/* 3. JSON */}
                 <div className="export-card">
                   <div className="export-card-header">
                     <span className="export-card-type">Structured Data (.json)</span>
@@ -1405,7 +1340,6 @@ export default function App() {
                   </button>
                 </div>
 
-                {/* 4. Digital Twin */}
                 <div className="export-card">
                   <div className="export-card-header">
                     <span className="export-card-type">Telemetry Schema (.json)</span>

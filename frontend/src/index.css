@@ -1,11 +1,5 @@
-/* ==========================================================================
-   FMEA-GPT AEROSPACE WORKSTATION DESIGN SYSTEM
-   Precision Airworthiness & MRO Reliability Engineering Interface
-   Zero Purple / Dark Industrial Charcoal / Warm Aerospace Orange
-   ========================================================================== */
 
 :root {
-  /* Surfaces & Canvas */
   --bg-deep: #08090A;
   --bg-canvas: #0D0F11;
   --bg-panel: #14171A;
@@ -15,19 +9,16 @@
   --bg-active: #2C333D;
   --bg-input: #101317;
 
-  /* Borders & Dividers */
   --border-subtle: #22262D;
   --border-medium: #2C323B;
   --border-strong: #3B434F;
   --border-active: #FF6A2A;
 
-  /* Typography Colors */
   --text-primary: #F2F3F4;
   --text-secondary: #A9AFB6;
   --text-muted: #747B83;
   --text-dim: #4E555E;
 
-  /* Functional Aerospace Accents */
   --accent-orange: #FF6A2A;
   --accent-orange-hover: #E8581C;
   --accent-orange-dim: rgba(255, 106, 42, 0.12);
@@ -49,25 +40,19 @@
   --accent-slate-dim: rgba(84, 98, 116, 0.15);
   --accent-slate-border: rgba(84, 98, 116, 0.35);
 
-  /* Fonts */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
 
-  /* Geometry & Corners (restrained industrial radius) */
   --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
 
-  /* Shadows: subtle dark industrial elevation */
   --shadow-panel: 0 4px 16px rgba(0, 0, 0, 0.6);
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
   --shadow-inset: inset 0 1px 1px rgba(255, 255, 255, 0.04);
 }
 
-/* ==========================================================================
-   Base & Resets
-   ========================================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -86,7 +71,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Technical Scrollbars */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -102,9 +86,6 @@ html, body {
   background: var(--accent-orange);
 }
 
-/* ==========================================================================
-   Top Header Bar
-   ========================================================================== */
 .top-header {
   height: 52px;
   background: var(--bg-canvas);
@@ -263,9 +244,6 @@ html, body {
   font-weight: 700;
 }
 
-/* ==========================================================================
-   Application Layout
-   ========================================================================== */
 .app-layout {
   display: flex;
   height: calc(100vh - 52px);
@@ -274,7 +252,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Left Navigation Rail */
 .nav-rail {
   width: 68px;
   background: var(--bg-canvas);
@@ -339,7 +316,6 @@ html, body {
   margin: 6px 0;
 }
 
-/* Main Content Workspace */
 .workspace {
   flex: 1;
   display: flex;
@@ -349,9 +325,6 @@ html, body {
   background: var(--bg-deep);
 }
 
-/* ==========================================================================
-   Instrumentation Readout Bar (4 Metrics)
-   ========================================================================== */
 .instrumentation-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr) auto;
@@ -458,9 +431,6 @@ html, body {
   gap: 8px;
 }
 
-/* ==========================================================================
-   Hero Component Panel (Cockpit Overview)
-   ========================================================================== */
 .hero-component-panel {
   display: grid;
   grid-template-columns: 1fr 340px;
@@ -577,7 +547,6 @@ html, body {
   color: var(--accent-orange);
 }
 
-/* Hotspot Pins on Component Render */
 .hotspot-pin {
   position: absolute;
   z-index: 15;
@@ -716,9 +685,6 @@ html, body {
   color: var(--accent-orange);
 }
 
-/* ==========================================================================
-   Engineering Controls & Preset Bar
-   ========================================================================== */
 .controls-panel {
   margin: 0 20px 20px 20px;
   background: var(--bg-panel);
@@ -874,9 +840,6 @@ html, body {
   color: var(--text-primary);
 }
 
-/* ==========================================================================
-   Evidence Coverage Instrument
-   ========================================================================== */
 .evidence-instrument {
   background: var(--bg-panel);
   border: 1px solid var(--border-subtle);
@@ -975,9 +938,6 @@ html, body {
   line-height: 1.25;
 }
 
-/* ==========================================================================
-   Engineering Worksheet Table (MIL-STD-1629A)
-   ========================================================================== */
 .table-panel {
   margin: 0 20px 20px 20px;
   background: var(--bg-panel);
@@ -1052,7 +1012,6 @@ html, body {
   background: var(--bg-elevated);
 }
 
-/* Badges */
 .eng-badge {
   display: inline-flex;
   align-items: center;
@@ -1134,7 +1093,6 @@ html, body {
   color: var(--accent-red);
 }
 
-/* Expanded Provenance Record Row */
 .provenance-expanded-cell {
   background: var(--bg-canvas) !important;
   padding: 16px 20px !important;
@@ -1240,9 +1198,6 @@ html, body {
   border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
 }
 
-/* ==========================================================================
-   Quarantined Legacy RPN Warning & Breakdown
-   ========================================================================== */
 .legacy-warning-box {
   background: var(--accent-amber-dim);
   border: 1px solid var(--accent-amber-border);
@@ -1301,9 +1256,6 @@ html, body {
   transition: width 0.3s ease;
 }
 
-/* ==========================================================================
-   Evidence Gap / Unknown Component Alert
-   ========================================================================== */
 .corpus-gap-panel {
   background: var(--accent-red-dim);
   border: 1px solid var(--accent-red-border);
@@ -1342,9 +1294,6 @@ html, body {
   line-height: 1.5;
 }
 
-/* ==========================================================================
-   Diagnostic Reasoning Trace (Execution Chain)
-   ========================================================================== */
 .trace-panel {
   margin: 0 20px 20px 20px;
   background: var(--bg-panel);
@@ -1431,9 +1380,6 @@ html, body {
   border-left: 2px solid var(--accent-orange);
 }
 
-/* ==========================================================================
-   Exports Hub
-   ========================================================================== */
 .exports-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1506,9 +1452,6 @@ html, body {
   color: #fff;
 }
 
-/* ==========================================================================
-   Responsive Adaptations
-   ========================================================================== */
 @media (max-width: 1200px) {
   .hero-component-panel {
     grid-template-columns: 1fr;
