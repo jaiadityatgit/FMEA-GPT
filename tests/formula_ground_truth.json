@@ -1,0 +1,230 @@
+[
+  {
+    "formula_id": "FGT-01",
+    "source_document": "MIL-STD-1629A.pdf",
+    "formula_name": "mode_criticality_number",
+    "formula_type": "criticality",
+    "original_text": "Cm = β × α × λp × t",
+    "expected_display": "Cm = β × α × λp × t",
+    "normalized_expression": "Cm = beta * alpha * lambda_p * t",
+    "expected_variables": {
+      "Cm": "mode criticality number for failure mode",
+      "beta": "conditional probability of occurrence of next higher failure effect (β)",
+      "alpha": "failure mode ratio (fraction of part failure rate for the mode) (α)",
+      "lambda_p": "part failure rate (λp)",
+      "t": "operating time or mission duration"
+    },
+    "expected_units": {
+      "Cm": "dimensionless",
+      "beta": "dimensionless",
+      "alpha": "dimensionless",
+      "lambda_p": "failures/operating_hour",
+      "t": "operating_hours"
+    },
+    "page_range": [27, 29],
+    "standard_reference": "MIL-STD-1629A Task 102 Section 4.5.2"
+  },
+  {
+    "formula_id": "FGT-02",
+    "source_document": "MIL-STD-1629A.pdf",
+    "formula_name": "item_criticality_number",
+    "formula_type": "criticality",
+    "original_text": "Cr = Σ(Cm)n",
+    "expected_display": "Cr = Σ(Cm)n",
+    "normalized_expression": "Cr = sum(Cm_n for n in failure_modes)",
+    "expected_variables": {
+      "Cr": "criticality number for the item",
+      "Cm": "mode criticality number for each failure mode n",
+      "n": "number of failure modes identified for the item"
+    },
+    "expected_units": {
+      "Cr": "dimensionless",
+      "Cm": "dimensionless",
+      "n": "integer_count"
+    },
+    "page_range": [28, 29],
+    "standard_reference": "MIL-STD-1629A Task 102 Section 4.5.3"
+  },
+  {
+    "formula_id": "FGT-03",
+    "source_document": "MIL-STD-1629A.pdf",
+    "formula_name": "exponential_reliability",
+    "formula_type": "reliability",
+    "original_text": "R(t) = e^(-λt)",
+    "expected_display": "R(t) = e^(-λt)",
+    "normalized_expression": "R_t = exp(-lambda * t)",
+    "expected_variables": {
+      "R(t)": "reliability (probability of survival to time t)",
+      "lambda": "constant failure rate (λ)",
+      "t": "operating time"
+    },
+    "expected_units": {
+      "R(t)": "dimensionless",
+      "lambda": "failures/operating_hour",
+      "t": "operating_hours"
+    },
+    "page_range": [27, 35],
+    "standard_reference": "MIL-STD-1629A Task 102"
+  },
+  {
+    "formula_id": "FGT-04",
+    "source_document": "MIL-STD-1629A.pdf",
+    "formula_name": "exponential_failure_probability",
+    "formula_type": "reliability",
+    "original_text": "P(t) = 1 - e^(-λt)",
+    "expected_display": "P(t) = 1 - e^(-λt)",
+    "normalized_expression": "P_t = 1 - exp(-lambda * t)",
+    "expected_variables": {
+      "P(t)": "probability of failure by time t",
+      "lambda": "constant failure rate (λ)",
+      "t": "operating time",
+      "e": "base of natural logarithm"
+    },
+    "expected_units": {
+      "P(t)": "dimensionless",
+      "lambda": "failures/operating_hour",
+      "t": "operating_hours",
+      "e": "mathematical_constant"
+    },
+    "page_range": [27, 35],
+    "standard_reference": "MIL-STD-1629A Task 102 Section 4.5"
+  },
+  {
+    "formula_id": "FGT-05",
+    "source_document": "NASA_TP_2013_217830_Turbine_Blade_Life.pdf",
+    "formula_name": "weibull_cumulative_failure",
+    "formula_type": "reliability",
+    "original_text": "F(t) = 1 - e^(-(t/η)^β)",
+    "expected_display": "F(t) = 1 - e^(-(t/η)^β)",
+    "normalized_expression": "F_t = 1 - exp(-(t / eta)^beta)",
+    "expected_variables": {
+      "F(t)": "cumulative failure probability at time t",
+      "t": "operating time or mission cycles",
+      "eta": "characteristic life (scale parameter) (η)",
+      "beta": "Weibull slope (shape parameter) (β)"
+    },
+    "expected_units": {
+      "F(t)": "dimensionless",
+      "t": "flight_hours_or_cycles",
+      "eta": "flight_hours_or_cycles",
+      "beta": "dimensionless"
+    },
+    "page_range": [11, 12],
+    "standard_reference": "NASA/TP-2013-217030 Section 5.1 Equation 1"
+  },
+  {
+    "formula_id": "FGT-06",
+    "source_document": "NASA_TP_2013_217830_Turbine_Blade_Life.pdf",
+    "formula_name": "weibull_reliability_function",
+    "formula_type": "reliability",
+    "original_text": "R(t) = e^(-(t/η)^β)",
+    "expected_display": "R(t) = e^(-(t/η)^β)",
+    "normalized_expression": "R_t = exp(-(t / eta)^beta)",
+    "expected_variables": {
+      "R(t)": "reliability function (survival probability to time t)",
+      "t": "operating time or mission cycles",
+      "eta": "characteristic life (scale parameter) (η)",
+      "beta": "Weibull slope (shape parameter) (β)"
+    },
+    "expected_units": {
+      "R(t)": "dimensionless",
+      "t": "flight_hours_or_cycles",
+      "eta": "flight_hours_or_cycles",
+      "beta": "dimensionless"
+    },
+    "page_range": [11, 12],
+    "standard_reference": "NASA/TP-2013-217030 Section 5.1"
+  },
+  {
+    "formula_id": "FGT-07",
+    "source_document": "NASA_TP_2013_217830_Turbine_Blade_Life.pdf",
+    "formula_name": "johnson_weibull_median_rank",
+    "formula_type": "reliability",
+    "original_text": "MR = (i - 0.3) / (N + 0.4)",
+    "expected_display": "MR = (i - 0.3) / (N + 0.4)",
+    "normalized_expression": "MR = (i - 0.3) / (N + 0.4)",
+    "expected_variables": {
+      "MR": "median rank cumulative failure probability estimate",
+      "i": "failure order number (rank)",
+      "N": "total sample size (population)"
+    },
+    "expected_units": {
+      "MR": "dimensionless",
+      "i": "integer_rank",
+      "N": "integer_count"
+    },
+    "page_range": [12, 13],
+    "standard_reference": "NASA/TP-2013-217030 Section 5.1 Benard Approximation"
+  },
+  {
+    "formula_id": "FGT-08",
+    "source_document": "NASA_Internal_Cooling_Passages_Heat_Transfer.pdf",
+    "formula_name": "nusselt_number",
+    "formula_type": "heat_transfer",
+    "original_text": "Nu = (h × d) / k",
+    "expected_display": "Nu = (h × d) / k",
+    "normalized_expression": "Nu = (h * d) / k",
+    "expected_variables": {
+      "Nu": "Nusselt number",
+      "h": "convective heat transfer coefficient",
+      "d": "hydraulic passage diameter",
+      "k": "thermal conductivity of coolant air"
+    },
+    "expected_units": {
+      "Nu": "dimensionless",
+      "h": "W/(m^2*K)",
+      "d": "meters",
+      "k": "W/(m*K)"
+    },
+    "page_range": [14, 16],
+    "standard_reference": "NASA CR-198472 Section 4.1 Flow Parameters"
+  },
+  {
+    "formula_id": "FGT-09",
+    "source_document": "NASA_Internal_Cooling_Passages_Heat_Transfer.pdf",
+    "formula_name": "reynolds_number",
+    "formula_type": "fluid_dynamics",
+    "original_text": "Re = (ρ × V × d) / μ",
+    "expected_display": "Re = (ρ × V × d) / μ",
+    "normalized_expression": "Re = (rho * V * d) / mu",
+    "expected_variables": {
+      "Re": "Reynolds number",
+      "rho": "coolant fluid density (ρ)",
+      "V": "mean coolant flow velocity",
+      "d": "hydraulic passage diameter",
+      "mu": "dynamic viscosity of coolant air (μ)"
+    },
+    "expected_units": {
+      "Re": "dimensionless",
+      "rho": "kg/m^3",
+      "V": "m/s",
+      "d": "meters",
+      "mu": "Pa*s"
+    },
+    "page_range": [14, 16],
+    "standard_reference": "NASA CR-198472 Section 4.1 Flow Parameters"
+  },
+  {
+    "formula_id": "FGT-10",
+    "source_document": "NASA_Internal_Cooling_Passages_Heat_Transfer.pdf",
+    "formula_name": "rotation_number",
+    "formula_type": "fluid_dynamics",
+    "original_text": "Ro = (Ω × d) / V",
+    "expected_display": "Ro = (Ω × d) / V",
+    "normalized_expression": "Ro = (Omega * d) / V",
+    "expected_variables": {
+      "Ro": "Rotation number (Coriolis acceleration parameter)",
+      "Omega": "rotational angular velocity (Ω)",
+      "d": "hydraulic passage diameter",
+      "V": "mean coolant flow velocity"
+    },
+    "expected_units": {
+      "Ro": "dimensionless",
+      "Omega": "rad/s",
+      "d": "meters",
+      "V": "m/s"
+    },
+    "page_range": [14, 16],
+    "standard_reference": "NASA CR-198472 Section 4.1 Coriolis Acceleration Parameter"
+  }
+]

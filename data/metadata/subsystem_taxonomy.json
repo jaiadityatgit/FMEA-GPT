@@ -1,0 +1,465 @@
+{
+  "schema_version": "1.0",
+  "title": "FMEA-GPT Subsystem Taxonomy and Failure-Mechanism Narrative Profiles",
+  "purpose": "Externalizes engineering taxonomy (ATA chapter mapping, component classification profiles, subsystem/stage naming rules, failure-mechanism narrative templates) that previously lived as hard-coded literals in src/agents/providers/local_synthesizer.py and src/agents/nodes/fmea_builder.py. Python code contains only matching/assembly logic; every engineering statement here carries an explicit provenance status.",
+  "loaded_by": "src/agents/taxonomy.py",
+  "status_vocabulary": {
+    "SOURCE_DERIVED": "Statement is taken from (or verbatim-quoted from) a document in the indexed corpus; source/page given.",
+    "REFERENCE_TAXONOMY": "Industry reference numbering (e.g. ATA iSpec 2200 chapters). Used only as a navigation label; the specification itself is NOT in the indexed corpus.",
+    "UNVERIFIED_ENGINEERING_KNOWLEDGE": "General engineering description not established by any indexed source. Displayed with an explicit UNVERIFIED label.",
+    "DOMAIN_HEURISTIC": "Expert rule-of-thumb narrative. Never presented as a requirement; carries SupportLevel.DOMAIN_HEURISTIC.",
+    "NOT_ESTABLISHED_IN_CORPUS": "The indexed corpus contains no data for this item (e.g. inspection intervals, occurrence probability). The system must say so rather than invent a value."
+  },
+  "ata_chapters": {
+    "_status": "REFERENCE_TAXONOMY",
+    "_basis": "ATA iSpec 2200 / ATA 100 chapter numbering (commercial specification, not in the indexed corpus). Used as labels only.",
+    "27": {"title": "Flight Controls"},
+    "29": {"title": "Hydraulic Power"},
+    "38": {"title": "Water/Waste"},
+    "72": {
+      "title": "Engine (Turbine/Turboprop)",
+      "sections": {
+        "72-30": "Compressor Section",
+        "72-50": "Turbine Section"
+      }
+    },
+    "73": {"title": "Engine Fuel and Control"}
+  },
+  "default_part_number": {
+    "value": "UNSPECIFIED",
+    "status": "NOT_ESTABLISHED_IN_CORPUS",
+    "note": "No default part numbers are fabricated. If the user does not supply a P/N the report shows UNSPECIFIED."
+  },
+  "component_profiles": [
+    {
+      "profile_id": "out_of_domain",
+      "match_any": ["fictional", "unknown", "xyz", "plasma", "stealth waveguide", "spacecraft", "starship", "warp"],
+      "component_id": "COMP-UNVERIFIED-001",
+      "system": {"text": "Unknown / Fictional System", "status": "NOT_ESTABLISHED_IN_CORPUS"},
+      "subsystem_rules": [],
+      "default_subsystem": "Uncataloged Advanced Experimental Unit",
+      "regulatory_class": {"text": "Unclassified (Corpus Lacks Documentation)", "status": "NOT_ESTABLISHED_IN_CORPUS"},
+      "operating_environment": {"text": "Operating envelope unverified in local technical baseline.", "status": "NOT_ESTABLISHED_IN_CORPUS"},
+      "primary_function": {"text": "Function not established in indexed corpus.", "status": "NOT_ESTABLISHED_IN_CORPUS"},
+      "analysis_scope": "Indenture Level 4 (Subsystem / Equipment Component)",
+      "classification_confidence": "LOW",
+      "analysis_status": "insufficient_evidence",
+      "classification_claim": {
+        "claim_id": "CLM-COMP-CLASS-OUTOFDOMAIN",
+        "statement": "Component '{component}' is not cataloged in the civil aviation turbomachinery or primary flight control standards corpus (FAA ACs / EASA CS-E / NASA technical reports). Airworthiness regulatory tier cannot be established.",
+        "support_level": "insufficient_evidence",
+        "verification_notes": "Component outside validated civil turbomachinery and flight control corpus.",
+        "evidence": []
+      }
+    },
+    {
+      "profile_id": "cabin_utility",
+      "match_any": ["lavatory", "flush", "cabin", "galley", "water", "waste", "toilet"],
+      "component_id": "COMP-UNVERIFIED-001",
+      "ata_chapter": "38",
+      "system": {"text": "Cabin Systems / Water and Waste (ATA 38)", "status": "REFERENCE_TAXONOMY"},
+      "subsystem_rules": [],
+      "default_subsystem": "Cabin Utility Assembly",
+      "regulatory_class": {"text": "Standard Airborne Equipment (Pending Regulatory Assessment)", "status": "NOT_ESTABLISHED_IN_CORPUS"},
+      "operating_environment": {"text": "Operating envelope unverified in local technical baseline.", "status": "NOT_ESTABLISHED_IN_CORPUS"},
+      "primary_function": {"text": "Cabin utility function; no propulsion or primary flight control authority (UNVERIFIED general description).", "status": "UNVERIFIED_ENGINEERING_KNOWLEDGE"},
+      "analysis_scope": "Indenture Level 4 (Subsystem / Equipment Component)",
+      "classification_confidence": "LOW",
+      "analysis_status": "insufficient_evidence",
+      "classification_claim": {
+        "claim_id": "CLM-COMP-CLASS-OUTOFDOMAIN",
+        "statement": "Component '{component}' is not cataloged in the civil aviation turbomachinery or primary flight control standards corpus (FAA ACs / EASA CS-E / NASA technical reports). Airworthiness regulatory tier cannot be established.",
+        "support_level": "insufficient_evidence",
+        "verification_notes": "Component outside validated civil turbomachinery and flight control corpus.",
+        "evidence": []
+      }
+    },
+    {
+      "profile_id": "engine_fuel_control",
+      "match_any": ["fuel metering", "metering valve", "fuel valve", "fmv", "hmau"],
+      "component_id": "COMP-FUEL-CTRL-01",
+      "ata_chapter": "73",
+      "system": {"text": "Propulsion / Engine Fuel and Control (ATA 73)", "status": "REFERENCE_TAXONOMY"},
+      "subsystem_rules": [],
+      "default_subsystem": "Engine Fuel Metering / Control Unit",
+      "regulatory_class": {
+        "text": "Engine Control System Component (EASA CS-E 50; FAA 14 CFR § 33.28)",
+        "status": "SOURCE_DERIVED",
+        "note": "CS-E 50 is in the indexed corpus (EASA CS-E Amdt 5, p.33-34). 14 CFR § 33.28 rule text is not indexed and is given as a reference only."
+      },
+      "operating_environment": {"text": "UNVERIFIED (not established in indexed corpus): engine-mounted fuel control exposed to aviation turbine fuel, vibration and engine-bay temperatures. Pressures/temperature limits must be taken from OEM data.", "status": "UNVERIFIED_ENGINEERING_KNOWLEDGE"},
+      "primary_function": {"text": "Meter fuel flow to the combustor in response to engine control commands (UNVERIFIED general description).", "status": "UNVERIFIED_ENGINEERING_KNOWLEDGE"},
+      "analysis_scope": "Indenture Level 3 (Fuel Metering Subassembly)",
+      "classification_confidence": "MEDIUM",
+      "analysis_status": "supported",
+      "classification_claim": {
+        "claim_id": "CLM-COMP-CLASS-003",
+        "statement": "Assessed as an Engine Control System component under EASA CS-E 50, which requires that single failures of Engine Control System components do not result in a Hazardous Engine Effect. Applicability to this specific unit is an engineering inference; part-level compliance data are not in the corpus.",
+        "support_level": "inference",
+        "verification_notes": "Excerpt verified verbatim against EASA_CS-E_Amnd5_EasyAccessRules.pdf page 34 (core-final audit).",
+        "evidence": [
+          {
+            "evidence_id": "EVID-CS-E50-P34",
+            "source_document": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+            "document_title": "CS-E Book 1 - Airworthiness Code - Engines (Amendment 5)",
+            "publisher": "EASA",
+            "page_number": 34,
+            "section": "CS-E 50(c)(3)",
+            "excerpt": "Single Failures of Engine Control System components do not result in a Hazardous Engine Effect",
+            "excerpt_verbatim": true,
+            "evidence_type": "REGULATORY_REQUIREMENT",
+            "support_level": "direct_source"
+          }
+        ]
+      }
+    },
+    {
+      "profile_id": "turbomachinery",
+      "match_any": ["turbine", "blade", "compressor", "hpc", "hpt", "rotor", "cfm56"],
+      "component_id": "COMP-TURBOMACHINERY-01",
+      "ata_chapter": "72",
+      "system": {"text": "Propulsion / Aircraft Gas Turbine Engine (ATA 72)", "status": "REFERENCE_TAXONOMY"},
+      "subsystem_rules": [
+        {"match_any": ["high pressure turbine", "hpt"], "subsystem": "High Pressure Turbine (HPT) Module", "ata_section": "72-50"},
+        {"match_any": ["low pressure turbine", "lpt"], "subsystem": "Low Pressure Turbine (LPT) Module", "ata_section": "72-50"},
+        {"match_any": ["high pressure compressor", "hpc"], "subsystem": "High Pressure Compressor (HPC) Module", "ata_section": "72-30"},
+        {"match_any": ["compressor"], "subsystem": "Compressor Module (stage not specified)", "ata_section": "72-30"},
+        {"match_any": ["turbine"], "subsystem": "Turbine Module (stage not specified)", "ata_section": "72-50"}
+      ],
+      "subsystem_rules_status": "UNVERIFIED_ENGINEERING_KNOWLEDGE",
+      "subsystem_rules_note": "Stage/module naming is derived only from words in the user's component description. No engine model, stage number or module is assumed when the user does not state it (previous behaviour renamed every turbine input to 'CFM56 High Pressure Turbine Stage 1 Rotor Blade'; removed).",
+      "default_subsystem": "Turbomachinery Module (section not specified)",
+      "regulatory_class": {
+        "text": "Engine Critical Part assessment required (14 CFR § 33.75 / EASA CS-E 510, CS-E 515) - designation not established in corpus",
+        "status": "SOURCE_DERIVED",
+        "note": "The definition and identification requirement are source-derived (CS-E p.18; AC 33.75-1A p.5). Whether the specific part IS an Engine Critical Part is an OEM/type-design determination that the corpus cannot establish."
+      },
+      "operating_environment": {"text": "UNVERIFIED (not established in indexed corpus): rotating hot-section gas-path part subject to combined centrifugal, thermal-gradient and vibratory loading and combustion-gas environment. Temperatures, speeds and stresses must be taken from OEM data.", "status": "UNVERIFIED_ENGINEERING_KNOWLEDGE"},
+      "primary_function": {"text": "Exchange energy with the engine gas path as part of the rotating turbomachinery (UNVERIFIED general description).", "status": "UNVERIFIED_ENGINEERING_KNOWLEDGE"},
+      "analysis_scope": "Indenture Level 3 (Turbomachinery Airfoil Assembly per MIL-STD-1629A indenture concept)",
+      "classification_confidence": "MEDIUM",
+      "analysis_status": "supported",
+      "classification_claim": {
+        "claim_id": "CLM-COMP-CLASS-001",
+        "statement": "Rotating turbomachinery parts must be assessed against the EASA CS-E Engine Critical Part definition and the 14 CFR § 33.75(a)(2) requirement to identify any engine part whose failure could reasonably result in a hazardous engine effect. Whether this specific part is designated an Engine Critical Part is a type-design/OEM determination not established in the indexed corpus.",
+        "support_level": "inference",
+        "verification_notes": "Both excerpts verified verbatim against the cited PDF pages (core-final audit). Previous hard-coded excerpt attributed to AC 33.75-1A p.4 was a paraphrase and has been replaced.",
+        "evidence": [
+          {
+            "evidence_id": "EVID-CSE-ECP-DEF-P18",
+            "source_document": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+            "document_title": "CS-E Book 1 - Airworthiness Code - Engines (Amendment 5)",
+            "publisher": "EASA",
+            "page_number": 18,
+            "section": "Definitions (e) Terms associated with Engine Critical Parts",
+            "excerpt": "Engine Critical Part means a part that relies upon meeting prescribed integrity specifications of CS-E 515 to avoid its Primary Failure, which is likely to result in a Hazardous Engine Effect.",
+            "excerpt_verbatim": true,
+            "evidence_type": "REGULATORY_REQUIREMENT",
+            "support_level": "direct_source"
+          },
+          {
+            "evidence_id": "EVID-AC3375-A2-P5",
+            "source_document": "FAA_AC_33.75-1A.pdf",
+            "document_title": "Guidance Material for 14 CFR 33.75, Safety Analysis",
+            "publisher": "FAA",
+            "page_number": 5,
+            "section": "§ 8.a (Rule Text, § 33.75(a)(2))",
+            "excerpt": "Any engine part the failure of which could reasonably result in a hazardous engine effect must be clearly identified in this summary",
+            "excerpt_verbatim": true,
+            "evidence_type": "REGULATORY_GUIDANCE",
+            "support_level": "direct_source"
+          }
+        ]
+      }
+    },
+    {
+      "profile_id": "flight_control_actuator",
+      "match_any": ["hydraulic actuator", "flight control actuator", "elevator actuator", "rudder actuator", "actuator"],
+      "component_id": "COMP-FLT-CTRL-ACT-01",
+      "ata_chapter": "27",
+      "system": {"text": "Flight Control / Hydraulic Power (ATA 27 / ATA 29)", "status": "REFERENCE_TAXONOMY"},
+      "subsystem_rules": [],
+      "default_subsystem": "Primary Flight Control Actuation",
+      "regulatory_class": {
+        "text": "Flight Control Component assessed under 14 CFR § 25.1309 (failure-condition classification requires aircraft-level FHA)",
+        "status": "SOURCE_DERIVED",
+        "note": "Safety objectives are source-derived (AC 25.1309-1B p.26 § 4.3). The failure-condition classification of a specific actuator is an aircraft-level FHA result not in the corpus."
+      },
+      "operating_environment": {"text": "UNVERIFIED (not established in indexed corpus): hydraulically powered actuator exposed to system pressure, fluid temperature range and airframe vibration. Values must be taken from airframe/OEM data.", "status": "UNVERIFIED_ENGINEERING_KNOWLEDGE"},
+      "primary_function": {"text": "Convert hydraulic power into motion to position a flight control surface (UNVERIFIED general description).", "status": "UNVERIFIED_ENGINEERING_KNOWLEDGE"},
+      "analysis_scope": "Indenture Level 3 (Primary Flight Control Actuator)",
+      "classification_confidence": "MEDIUM",
+      "analysis_status": "supported",
+      "classification_claim": {
+        "claim_id": "CLM-COMP-CLASS-002",
+        "statement": "Assessed under 14 CFR § 25.1309 safety objectives; per AC 25.1309-1B, catastrophic failure conditions require that no single failure results in the condition and that each is extremely improbable. Whether this actuator's failure conditions are catastrophic is an aircraft-level FHA determination not established in the corpus.",
+        "support_level": "inference",
+        "verification_notes": "Excerpt verified verbatim against FAA_AC_25.1309-1B.pdf page 26 (core-final audit). Previous hard-coded excerpt attributed to p.49 was not found on that page and has been replaced.",
+        "evidence": [
+          {
+            "evidence_id": "EVID-AC251309-43-P26",
+            "source_document": "FAA_AC_25.1309-1B.pdf",
+            "document_title": "System Design and Analysis",
+            "publisher": "FAA",
+            "page_number": 26,
+            "section": "§ 4.3 Safety Objectives for Catastrophic Failure Conditions",
+            "excerpt": "No single failure results in a catastrophic failure condition; 4.3.2 Each catastrophic failure condition is extremely improbable",
+            "excerpt_verbatim": true,
+            "evidence_type": "REGULATORY_GUIDANCE",
+            "support_level": "direct_source"
+          }
+        ]
+      }
+    },
+    {
+      "profile_id": "fallback",
+      "match_any": [],
+      "component_id": "COMP-UNVERIFIED-001",
+      "system": {"text": "General Aerospace Equipment", "status": "NOT_ESTABLISHED_IN_CORPUS"},
+      "subsystem_rules": [],
+      "default_subsystem": "Uncataloged Line Replaceable Unit",
+      "regulatory_class": {"text": "Standard Airborne Equipment (Pending Regulatory Assessment)", "status": "NOT_ESTABLISHED_IN_CORPUS"},
+      "operating_environment": {"text": "Operating envelope not established in indexed corpus.", "status": "NOT_ESTABLISHED_IN_CORPUS"},
+      "primary_function": {"text": "Function not established in indexed corpus.", "status": "NOT_ESTABLISHED_IN_CORPUS"},
+      "analysis_scope": "Indenture Level 4 (Subsystem Component)",
+      "classification_confidence": "LOW",
+      "analysis_status": "insufficient_evidence",
+      "classification_claim": {
+        "claim_id": "CLM-COMP-CLASS-FALLBACK",
+        "statement": "Component '{component}' is not cataloged in the core turbomachinery or primary flight control aerospace knowledge base. Regulatory airworthiness tier is unverified; classification requires OEM data.",
+        "support_level": "insufficient_evidence",
+        "verification_notes": "Component outside validated propulsion knowledge base. Defaulting to unverified status.",
+        "evidence": []
+      }
+    }
+  ],
+  "failure_mechanism_profiles_note": "Narratives are DOMAIN_HEURISTIC / ENGINEERING_INFERENCE templates. They contain NO inspection intervals, OEM task numbers, 'mandatory' language, rotor speeds or gas temperatures. Severity categories are engineering judgments mapping the postulated end effect to MIL-STD-1629A definitions, not OEM or certification severity determinations. Legacy S/O/D scores are quarantined automotive-style values kept only for backward-compatible exports.",
+  "not_established_interval": "Not established in indexed corpus - defer to OEM engine/component manual and approved maintenance program",
+  "failure_mechanism_profiles": [
+    {
+      "profile_id": "fretting",
+      "match_mechanism": ["fretting"],
+      "match_mode": ["fretting"],
+      "cause": "Cyclic micro-slip between blade attachment and disk slot contact surfaces under centrifugal and vibratory loading, producing localized contact stress concentrations.",
+      "local_effect": "Fretting damage and crack nucleation at the edge of contact on attachment (dovetail / fir-tree) bearing surfaces.",
+      "next_effect": "Fretting-fatigue crack growth into the attachment under combined steady and alternating stress.",
+      "end_effect": "Potential blade or attachment separation with secondary damage to downstream hardware.",
+      "severity": {
+        "category": "CATEGORY_I",
+        "regulatory_hazard_tier": "Potential Hazardous Engine Effect if separation is not contained (assessment per 14 CFR § 33.75 / CS-E 510)",
+        "justification": "Engineering judgment: worst-case end effect (attachment separation) mapped to MIL-STD-1629A Category I definition. Not an OEM or certification severity determination.",
+        "support_level": "inference"
+      },
+      "single_point_failure": true,
+      "cil_reason": "Single-point structural load path at the blade attachment; retained as critical item candidate pending OEM review.",
+      "detection": {
+        "statement": "Attachment contact surfaces are generally only accessible at disassembly; NDT of blade roots and disk slots at shop visit is the typical detection means (domain heuristic).",
+        "category": "shop_depot_overhaul"
+      },
+      "recommended_action": "Review OEM attachment inspection requirements and contact-surface condition criteria; consider fretting-fatigue analysis of attachment contact stresses (domain heuristic, not a requirement).",
+      "operational_readiness_indicator": "Not established in indexed corpus",
+      "legacy_scores": {"severity": 10, "occurrence": 2, "detection": 7}
+    },
+    {
+      "profile_id": "cooling",
+      "match_mechanism": ["coolant", "cooling", "heat-transfer", "heat transfer"],
+      "match_mode": ["cooling"],
+      "cause": "Reduced internal coolant flow or degraded internal heat transfer (e.g. passage blockage or flow-path change), raising local metal temperature.",
+      "local_effect": "Local metal temperature increase in the affected airfoil region.",
+      "next_effect": "Accelerated temperature-dependent damage (oxidation, creep, thermal-fatigue) in the overheated region.",
+      "end_effect": "Premature airfoil distress; potential local burn-through or cracking leading to removal.",
+      "severity": {
+        "category": "CATEGORY_II",
+        "regulatory_hazard_tier": "Engine effect classification not established in corpus (assessment per 14 CFR § 33.75 / CS-E 510)",
+        "justification": "Engineering judgment: postulated end effect mapped to MIL-STD-1629A Category II definition. Not an OEM or certification severity determination.",
+        "support_level": "inference"
+      },
+      "single_point_failure": false,
+      "cil_reason": "Progressive thermal degradation mechanism; retained for review, not a single-point structural failure.",
+      "detection": {
+        "statement": "Borescope inspection for local thermal distress and engine performance trend monitoring are typical detection means (domain heuristic).",
+        "category": "scheduled_line_maintenance"
+      },
+      "recommended_action": "Review OEM limits for airfoil thermal distress and cooling-passage condition (domain heuristic, not a requirement).",
+      "operational_readiness_indicator": "Not established in indexed corpus",
+      "legacy_scores": {"severity": 8, "occurrence": 3, "detection": 6}
+    },
+    {
+      "profile_id": "thermomechanical_fatigue",
+      "match_mechanism": ["fatigue", "cyclic strain"],
+      "match_mode": ["tmf", "thermomechanical"],
+      "cause": "Cyclic thermal gradients during engine transients combined with mechanical (centrifugal) strain.",
+      "local_effect": "Crack initiation at regions of high cyclic strain such as cooling-hole edges or airfoil leading/trailing edges.",
+      "next_effect": "Crack propagation and possible local coating damage and aerodynamic distortion.",
+      "end_effect": "Engine vibration, potential blade fracture and in-flight shutdown.",
+      "severity": {
+        "category": "CATEGORY_II",
+        "regulatory_hazard_tier": "Potential Major Engine Effect (assessment per 14 CFR § 33.75(g) / CS-E 510)",
+        "justification": "Engineering judgment: postulated end effect mapped to MIL-STD-1629A Category II definition. Not an OEM or certification severity determination.",
+        "support_level": "inference"
+      },
+      "single_point_failure": true,
+      "cil_reason": "Single-part crack mechanism with potential major engine effect; retained as critical item candidate pending OEM review.",
+      "detection": {
+        "statement": "Borescope inspection and NDT (e.g. fluorescent penetrant) at overhaul are typical detection means for airfoil cracking (domain heuristic).",
+        "category": "scheduled_line_maintenance"
+      },
+      "recommended_action": "Apply OEM crack inspection criteria and limits (domain heuristic, not a requirement).",
+      "operational_readiness_indicator": "Not established in indexed corpus",
+      "legacy_scores": {"severity": 8, "occurrence": 4, "detection": 3}
+    },
+    {
+      "profile_id": "creep",
+      "match_mechanism": ["creep", "stress rupture"],
+      "match_mode": ["creep"],
+      "cause": "Sustained centrifugal tensile stress at high metal temperature.",
+      "local_effect": "Time-dependent inelastic elongation and microstructural damage accumulation.",
+      "next_effect": "Radial growth leading to reduced tip clearance and possible tip rub.",
+      "end_effect": "Performance loss and, if unchecked, stress-rupture fracture.",
+      "severity": {
+        "category": "CATEGORY_III",
+        "regulatory_hazard_tier": "Engine effect classification not established in corpus (assessment per 14 CFR § 33.75 / CS-E 510)",
+        "justification": "Engineering judgment: postulated end effect (performance degradation) mapped to MIL-STD-1629A Category III definition. Not an OEM or certification severity determination.",
+        "support_level": "inference"
+      },
+      "single_point_failure": false,
+      "cil_reason": "Progressive degradation mechanism typically managed on condition; not retained as single-point failure.",
+      "detection": {
+        "statement": "Dimensional checks at shop visit and exhaust-gas-temperature trend monitoring are typical detection means (domain heuristic).",
+        "category": "shop_depot_overhaul"
+      },
+      "recommended_action": "Apply OEM dimensional/elongation limits (domain heuristic, not a requirement).",
+      "operational_readiness_indicator": "Not established in indexed corpus",
+      "legacy_scores": {"severity": 6, "occurrence": 3, "detection": 4}
+    },
+    {
+      "profile_id": "foreign_object_damage",
+      "match_mechanism": ["foreign object", "impact", "debris"],
+      "match_mode": ["fod", "foreign object"],
+      "cause": "Impact by ingested or internally generated debris.",
+      "local_effect": "Leading-edge nick, dent or notch producing a local stress concentration.",
+      "next_effect": "Earlier high-cycle-fatigue crack initiation from the damage site.",
+      "end_effect": "Possible blade fracture and secondary damage downstream.",
+      "severity": {
+        "category": "CATEGORY_II",
+        "regulatory_hazard_tier": "Potential Major Engine Effect (assessment per 14 CFR § 33.75(g) / CS-E 510)",
+        "justification": "Engineering judgment: postulated end effect mapped to MIL-STD-1629A Category II definition. Not an OEM or certification severity determination.",
+        "support_level": "inference"
+      },
+      "single_point_failure": true,
+      "cil_reason": "Damage-initiated crack mechanism; retained as critical item candidate pending OEM review.",
+      "detection": {
+        "statement": "Borescope inspection after suspected ingestion events is the typical detection means (domain heuristic).",
+        "category": "scheduled_line_maintenance"
+      },
+      "recommended_action": "Apply OEM damage limits and repair criteria (domain heuristic, not a requirement).",
+      "operational_readiness_indicator": "Not established in indexed corpus",
+      "legacy_scores": {"severity": 7, "occurrence": 3, "detection": 4}
+    },
+    {
+      "profile_id": "coating_oxidation",
+      "match_mechanism": ["oxidation", "sulfidation", "spallation"],
+      "match_mode": ["corrosion", "tbc", "coating"],
+      "cause": "Bond-coat oxidation / thermally grown oxide growth and thermal cycling, and environmental (hot corrosion) attack of the coating system.",
+      "local_effect": "Spallation of the ceramic top coat and loss of protective coating.",
+      "next_effect": "Increased substrate metal temperature and accelerated substrate oxidation in the exposed area.",
+      "end_effect": "Reduced airfoil life and premature removal; possible local burn-through.",
+      "severity": {
+        "category": "CATEGORY_III",
+        "regulatory_hazard_tier": "Engine effect classification not established in corpus (assessment per 14 CFR § 33.75 / CS-E 510)",
+        "justification": "Engineering judgment: postulated end effect (life reduction) mapped to MIL-STD-1629A Category III definition. Not an OEM or certification severity determination.",
+        "support_level": "inference"
+      },
+      "single_point_failure": false,
+      "cil_reason": "Gradual degradation mechanism without abrupt structural failure; not retained as single-point failure.",
+      "detection": {
+        "statement": "Borescope inspection for coating loss and thermal discoloration is the typical detection means (domain heuristic).",
+        "category": "scheduled_line_maintenance"
+      },
+      "recommended_action": "Apply OEM coating-loss limits (domain heuristic, not a requirement).",
+      "operational_readiness_indicator": "Not established in indexed corpus",
+      "legacy_scores": {"severity": 5, "occurrence": 4, "detection": 3}
+    },
+    {
+      "profile_id": "separation_liberation",
+      "match_mechanism": ["liberation"],
+      "match_mode": ["separation", "liberation", "rotor burst"],
+      "cause": "Crack propagation to critical size in the airfoil or attachment.",
+      "local_effect": "Separation of the blade or blade fragment from the rotor.",
+      "next_effect": "Impact on surrounding casing and downstream stages; rotor imbalance.",
+      "end_effect": "Potential Hazardous Engine Effect if high-energy debris is not contained (14 CFR § 33.75(g)(2) lists non-containment of high-energy debris).",
+      "severity": {
+        "category": "CATEGORY_I",
+        "regulatory_hazard_tier": "Hazardous Engine Effect (14 CFR § 33.75(g)(2)) if not contained",
+        "justification": "Engineering judgment: worst-case end effect mapped to MIL-STD-1629A Category I definition. Not an OEM or certification severity determination.",
+        "support_level": "inference",
+        "direct_source_if_evidence_from": ["33.75", "CS-E"]
+      },
+      "single_point_failure": true,
+      "cil_reason": "Single-point failure with potential Category I effect under MIL-STD-1629A / NASA-STD-8729.1A critical-item criteria.",
+      "detection": {
+        "statement": "Engine vibration monitoring and NDT of blade attachments/disk slots at shop visit are typical detection means (domain heuristic).",
+        "category": "real_time_cockpit_alert"
+      },
+      "recommended_action": "Follow OEM vibration exceedance and attachment inspection procedures (domain heuristic, not a requirement).",
+      "operational_readiness_indicator": "Not established in indexed corpus",
+      "legacy_scores": {"severity": 10, "occurrence": 1, "detection": 3}
+    },
+    {
+      "profile_id": "actuator_valve",
+      "match_mechanism": ["stiction", "seizure", "seal"],
+      "match_mode": ["actuator", "valve", "jam", "blow-by"],
+      "cause": "Contamination or mechanical binding of internal moving elements, or seal degradation.",
+      "local_effect": "Sluggish, incomplete or uncommanded travel of the moving element, or internal leakage.",
+      "next_effect": "Degraded metering or actuation performance.",
+      "end_effect": "Loss of precise control authority requiring redundant/back-up function.",
+      "severity": {
+        "category": "CATEGORY_II",
+        "regulatory_hazard_tier": "Failure-condition classification not established in corpus (assessment per 14 CFR § 25.1309 / CS-E 50)",
+        "justification": "Engineering judgment: postulated end effect mapped to MIL-STD-1629A Category II definition. Not an aircraft FHA or certification classification.",
+        "support_level": "inference"
+      },
+      "single_point_failure": true,
+      "cil_reason": "Control element failure requiring redundancy verification.",
+      "detection": {
+        "statement": "Position-feedback monitoring by the control system and functional checks are typical detection means (domain heuristic).",
+        "category": "real_time_cockpit_alert"
+      },
+      "recommended_action": "Apply OEM fluid-contamination and functional-check procedures (domain heuristic, not a requirement).",
+      "operational_readiness_indicator": "Not established in indexed corpus",
+      "legacy_scores": {"severity": 7, "occurrence": 2, "detection": 2}
+    },
+    {
+      "profile_id": "generic",
+      "match_mechanism": [],
+      "match_mode": [],
+      "cause": "Operational stress exceeding material capability under cyclic loading.",
+      "local_effect": "Localized yielding or surface cracking.",
+      "next_effect": "Progressive loss of structural stiffness or function.",
+      "end_effect": "Subsystem operational degradation.",
+      "severity": {
+        "category": "CATEGORY_III",
+        "regulatory_hazard_tier": "Not established in corpus",
+        "justification": "Domain heuristic: generic degradation mapped to MIL-STD-1629A Category III definition.",
+        "support_level": "domain_heuristic"
+      },
+      "single_point_failure": false,
+      "cil_reason": "Non-catastrophic generic mode.",
+      "detection": {
+        "statement": "Visual inspection during scheduled maintenance (domain heuristic).",
+        "category": "scheduled_line_maintenance"
+      },
+      "recommended_action": "Follow OEM maintenance data (domain heuristic, not a requirement).",
+      "operational_readiness_indicator": "Not established in indexed corpus",
+      "legacy_scores": {"severity": 5, "occurrence": 3, "detection": 4}
+    }
+  ],
+  "severity_definitions": {
+    "_status": "SOURCE_DERIVED",
+    "_source": "MIL-STD-1629A severity classification (indexed: MIL-STD-1629A.pdf)",
+    "CATEGORY_I": "Category I - Catastrophic: A failure which may cause death or weapon system loss.",
+    "CATEGORY_II": "Category II - Critical: A failure which may cause severe injury, major property damage, or major system damage which will result in mission loss.",
+    "CATEGORY_III": "Category III - Marginal: A failure which may cause minor injury, minor property damage, or minor system damage which will result in delay or loss of availability or mission degradation.",
+    "CATEGORY_IV": "Category IV - Minor: A failure not serious enough to cause injury, property damage, or system damage, but which will result in unscheduled maintenance or repair."
+  }
+}

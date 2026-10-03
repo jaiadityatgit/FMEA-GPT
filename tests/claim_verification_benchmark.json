@@ -1,0 +1,402 @@
+[
+  {
+    "case_id": "CV-01",
+    "claim": "Uncontained high-energy debris is classified as a hazardous engine effect under 14 CFR 33.75.",
+    "evidence_excerpt": "Section 33.75(g)(2)(i) defines hazardous engine effects to include: Non-containment of high-energy debris. The applicant must show that such effects will not occur under normal or failure conditions.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "airworthiness",
+    "claim_type": "regulatory",
+    "rationale": "Evidence explicitly and directly defines uncontained high-energy debris as a hazardous engine effect."
+  },
+  {
+    "case_id": "CV-02",
+    "claim": "Thermal gradients across turbine airfoils contribute to cyclic thermal stresses during engine power transients.",
+    "evidence_excerpt": "During engine acceleration and deceleration, large transient temperature gradients develop across the turbine airfoil cross-section, inducing substantial cyclic thermal stresses.",
+    "source_doc": "NASA-STD-8729.1A.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "failure modes",
+    "claim_type": "causal",
+    "rationale": "Evidence directly explains how transient temperature gradients induce cyclic thermal stresses."
+  },
+  {
+    "case_id": "CV-03",
+    "claim": "MIL-STD-1629A defines Category I severity as Catastrophic failure causing death or system loss.",
+    "evidence_excerpt": "Category I - Catastrophic. A failure mode which could result in death or total weapon system loss.",
+    "source_doc": "MIL-STD-1629A.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "severity",
+    "claim_type": "definition",
+    "rationale": "Textual definition of Category I in MIL-STD-1629A exactly matches the claim."
+  },
+  {
+    "case_id": "CV-04",
+    "claim": "In MIL-STD-1629A Task 102, mode criticality number Cm is calculated using failure effect probability beta, failure mode ratio alpha, and part failure rate lambda_p.",
+    "evidence_excerpt": "Mode criticality number (Cm) is calculated from Cm = beta * alpha * lambda_p * t, where beta is failure effect probability, alpha is failure mode ratio, and lambda_p is base part failure rate.",
+    "source_doc": "MIL-STD-1629A.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "criticality",
+    "claim_type": "quantitative",
+    "rationale": "Exact formula and variable definitions are directly stated in the evidence."
+  },
+  {
+    "case_id": "CV-05",
+    "claim": "Single failure points are prioritized for retention on the Critical Items List under NASA safety standards.",
+    "evidence_excerpt": "All single failure points (SFPs) that could result in loss of crew or vehicle shall be identified, documented, and submitted for retention on the Critical Items List (CIL).",
+    "source_doc": "NASA-STD-8729.1A.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "criticality",
+    "claim_type": "maintenance",
+    "rationale": "Direct standard requirement mandating SFP documentation on the CIL."
+  },
+  {
+    "case_id": "CV-06",
+    "claim": "Rotor blade fracture can lead to high-energy fragment release if casing containment is inadequate.",
+    "evidence_excerpt": "Blade loss events require containment verification to ensure released airfoil fragments cannot penetrate the surrounding engine casings and hazard aircraft structures.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "SUPPORTING_SOURCE",
+    "category": "failure modes",
+    "claim_type": "causal",
+    "rationale": "Evidence confirms the physical linkage between blade loss and fragment casing penetration requirements."
+  },
+  {
+    "case_id": "CV-07",
+    "claim": "Turbine rotor blades undergo sustained centrifugal tension at elevated operating temperatures.",
+    "evidence_excerpt": "Turbine rotor components operate under severe steady centrifugal mechanical loads combined with gas temperatures exceeding the alloy melting point.",
+    "source_doc": "NASA_C-MAPSS_Damage_Propagation_Modeling.pdf",
+    "expected_label": "SUPPORTING_SOURCE",
+    "category": "causes",
+    "claim_type": "description",
+    "rationale": "Passage materially supports the principle of steady centrifugal loading at elevated gas temperatures."
+  },
+  {
+    "case_id": "CV-08",
+    "claim": "Borescope inspection enables periodic detection of airfoil surface cracking without engine disassembly.",
+    "evidence_excerpt": "Periodic internal optical borescope inspections are specified in engine maintenance manuals to monitor hot-section airfoils for crack initiation and coating loss.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "SUPPORTING_SOURCE",
+    "category": "detection",
+    "claim_type": "maintenance",
+    "rationale": "Evidence supports borescope inspection capability and purpose without overreaching on intervals."
+  },
+  {
+    "case_id": "CV-09",
+    "claim": "Under EASA CS-E 510, hazardous engine effects require demonstrated acceptable risk with extremely remote probability.",
+    "evidence_excerpt": "CS-E 510(a) mandates that hazardous engine effects must be extremely remote, with cumulative probability of occurrence not exceeding 10^-7 per flight hour.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "airworthiness",
+    "claim_type": "regulatory",
+    "rationale": "Evidence explicitly establishes the regulatory requirement and probability threshold for CS-E 510."
+  },
+  {
+    "case_id": "CV-10",
+    "claim": "Foreign object damage creates leading edge stress concentrations that accelerate fatigue crack propagation.",
+    "evidence_excerpt": "Ingested hard debris impacting rotating compressor or turbine blades produces notches and localized plastic deformation, acting as severe stress concentrators for rapid fatigue propagation.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "causes",
+    "claim_type": "causal",
+    "rationale": "Direct physical explanation linking debris impact notch formation to fatigue crack acceleration."
+  },
+  {
+    "case_id": "CV-11",
+    "claim": "MIL-STD-1629A Category IV Minor severity denotes failure modes causing minor system degradation without damage.",
+    "evidence_excerpt": "Category IV - Minor. A failure mode which results in minor system degradation without injury or major hardware damage.",
+    "source_doc": "MIL-STD-1629A.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "severity",
+    "claim_type": "definition",
+    "rationale": "Exact definition of Category IV in MIL-STD-1629A matches the claim."
+  },
+  {
+    "case_id": "CV-12",
+    "claim": "Fluorescent penetrant inspection is utilized to detect surface-breaking fatigue cracks during depot overhaul.",
+    "evidence_excerpt": "Surface non-destructive inspection methods such as fluorescent penetrant testing (FPI) are established overhaul depot techniques for detecting micro-cracks in superalloy parts.",
+    "source_doc": "NASA_SP-2016-6105_Rev2_SE_Handbook.pdf",
+    "expected_label": "SUPPORTING_SOURCE",
+    "category": "detection",
+    "claim_type": "maintenance",
+    "rationale": "Directly supports use of fluorescent penetrant testing for detecting surface cracks during overhaul."
+  },
+  {
+    "case_id": "CV-13",
+    "claim": "Toxic products in cabin air originating from engine fluids constitute a hazardous engine effect.",
+    "evidence_excerpt": "In 14 CFR 33.75(g)(2)(iv), toxic air in crew or passenger compartments in sufficient concentrations to incapacitate occupants is designated a Hazardous Engine Effect.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "effects",
+    "claim_type": "regulatory",
+    "rationale": "Exact match to regulatory definition of toxic cabin air as hazardous effect."
+  },
+  {
+    "case_id": "CV-14",
+    "claim": "High temperature oxidation and sulfidation degrade the protective aluminide coating on turbine airfoils.",
+    "evidence_excerpt": "Exposure of turbine airfoils to sulfur-bearing combustion gases and elevated operating temperatures results in hot corrosion and accelerated oxidation of protective aluminide coatings.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "SUPPORTING_SOURCE",
+    "category": "failure modes",
+    "claim_type": "causal",
+    "rationale": "Materially explains mechanism of hot corrosion/oxidation degradation on turbine coatings."
+  },
+  {
+    "case_id": "CV-15",
+    "claim": "In civil airworthiness safety analysis, catastrophic failure conditions must be extremely improbable.",
+    "evidence_excerpt": "AC 25.1309-1B specifies that failure conditions categorized as Catastrophic must be extremely improbable, typically demonstrated by an occurrence rate less than 10^-9 per flight hour.",
+    "source_doc": "FAA_AC_25.1309-1B.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "airworthiness",
+    "claim_type": "regulatory",
+    "rationale": "Direct regulatory standard mapping catastrophic condition to extremely improbable / 10^-9."
+  },
+  {
+    "case_id": "CV-16",
+    "claim": "Sustained high temperature exposure induces creep elongation in high pressure turbine blades.",
+    "evidence_excerpt": "Creep strain accumulates over long durations under steady tensile stress and high metal temperatures, leading to permanent axial and radial elongation.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "SUPPORTING_SOURCE",
+    "category": "failure modes",
+    "claim_type": "causal",
+    "rationale": "Directly supports the physical principle of creep elongation under steady stress and temperature."
+  },
+  {
+    "case_id": "CV-17",
+    "claim": "Loss of engine thrust control or uncommanded shutdown represents a significant propulsion hazard.",
+    "evidence_excerpt": "Complete inability to modulate thrust or uncommanded engine shutdown during critical flight phases poses a major hazard to aircraft operations.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "SUPPORTING_SOURCE",
+    "category": "effects",
+    "claim_type": "description",
+    "rationale": "Passage confirms the operational hazard of engine thrust control loss and uncommanded shutdown."
+  },
+  {
+    "case_id": "CV-18",
+    "claim": "MIL-STD-1629A requires documenting failure detection methods and existing compensating provisions for each failure mode.",
+    "evidence_excerpt": "Block 11 and Block 12 of the FMECA worksheet require the analyst to record method of detection and compensating provisions that reduce failure severity.",
+    "source_doc": "MIL-STD-1629A.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "maintenance",
+    "claim_type": "definition",
+    "rationale": "Worksheet instructions in MIL-STD-1629A explicitly require detection methods and compensating provisions."
+  },
+  {
+    "case_id": "CV-19",
+    "claim": "Compressor bleed air is routed through internal cooling passages to regulate hot-section component temperatures.",
+    "evidence_excerpt": "Secondary cooling airflow bled from high-pressure compressor stages is directed into turbine rotor and stator cooling channels to maintain metal temperatures within design limits.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "SUPPORTING_SOURCE",
+    "category": "component classification",
+    "claim_type": "description",
+    "rationale": "Accurately supports the thermal management function of compressor bleed air cooling."
+  },
+  {
+    "case_id": "CV-20",
+    "claim": "Critical Items Lists require documented engineering rationale for retention when failure modes lack redundancy.",
+    "evidence_excerpt": "Items placed on the Critical Items List without redundancy must include formal retention rationale addressing design margins, testing, and inspection controls.",
+    "source_doc": "NASA-STD-8729.1A.pdf",
+    "expected_label": "DIRECT_SOURCE",
+    "category": "criticality",
+    "claim_type": "regulatory",
+    "rationale": "Direct standard instruction regarding formal retention rationale requirements for non-redundant CIL items."
+  },
+  {
+    "case_id": "CV-21",
+    "claim": "Thermomechanical fatigue causes turbine blade cracking.",
+    "evidence_excerpt": "Foreign object damage (FOD) occurs when birds, ice, or runway gravel are ingested into the compressor inlet, causing leading edge tear and severe impact denting.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "failure modes",
+    "claim_type": "causal",
+    "rationale": "Thematic mismatch: Evidence discusses foreign object damage ingestion, providing zero evidence for thermomechanical fatigue."
+  },
+  {
+    "case_id": "CV-22",
+    "claim": "A borescope inspection every 500 flight cycles is mandatory.",
+    "evidence_excerpt": "General FAA guidance discussing how inspection techniques and maintenance manuals help ensure continued airworthiness without specifying intervals.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "maintenance",
+    "claim_type": "quantitative",
+    "rationale": "Quantitative/modal overreach: General guidance on inspection does not prove or mandate an exact interval of 500 flight cycles."
+  },
+  {
+    "case_id": "CV-23",
+    "claim": "Hydraulic actuator spool stiction causes turbine blade uncontained disk burst.",
+    "evidence_excerpt": "Hydraulic flight control actuators can experience valve spool stiction if hydraulic fluid is contaminated with particulate matter.",
+    "source_doc": "NASA_ASRS_Maintenance_Incident_Reports.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "causes",
+    "claim_type": "causal",
+    "rationale": "Severe physical and thematic mismatch: Flight control actuator spool stiction does not cause turbine disk burst."
+  },
+  {
+    "case_id": "CV-24",
+    "claim": "High pressure turbine blades have a certified catastrophic failure probability of zero.",
+    "evidence_excerpt": "FAA AC 25.1309-1B specifies that catastrophic failure conditions must be extremely improbable, with probability on the order of 10^-9 per hour, acknowledging failure probability cannot be zero.",
+    "source_doc": "FAA_AC_25.1309-1B.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "airworthiness",
+    "claim_type": "regulatory",
+    "rationale": "Contradictory claim: Regulations require extremely remote/improbable (<10^-9), explicitly rejecting claims of absolute zero probability."
+  },
+  {
+    "case_id": "CV-25",
+    "claim": "Fluorescent penetrant inspection can detect internal subsurface creep voids inside single crystal superalloy blades.",
+    "evidence_excerpt": "Fluorescent penetrant inspection (FPI) is an optical surface inspection method capable of revealing defects open to the outer surface of non-porous materials.",
+    "source_doc": "MIL-STD-1629A.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "detection",
+    "claim_type": "description",
+    "rationale": "Contradictory physical capability: Evidence states FPI detects only defects open to the outer surface, which contradicts detecting internal subsurface creep voids."
+  },
+  {
+    "case_id": "CV-26",
+    "claim": "MIL-STD-1629A recommends automotive RPN thresholds above 100 to require mandatory redesign.",
+    "evidence_excerpt": "MIL-STD-1629A provides quantitative mode criticality numbers and qualitative severity rankings. The standard does not use Risk Priority Numbers (RPN) or numerical RPN thresholds.",
+    "source_doc": "MIL-STD-1629A.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "criticality",
+    "claim_type": "definition",
+    "rationale": "False methodology attribution: MIL-STD-1629A does not contain automotive RPN or an RPN > 100 threshold."
+  },
+  {
+    "case_id": "CV-27",
+    "claim": "Cooling passage blockage causes instant uncontained blade liberation within 3 seconds of throttle advance.",
+    "evidence_excerpt": "Secondary cooling airflow preserves thermal equilibrium in the turbine section. Prolonged reduction in airflow results in gradual temperature elevation and accelerated creep damage.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "causes",
+    "claim_type": "causal",
+    "rationale": "Unsupported extreme causal timeline: Evidence notes gradual thermal elevation, contradicting instant liberation within 3 seconds."
+  },
+  {
+    "case_id": "CV-28",
+    "claim": "Turbine blade thermal barrier coatings completely eliminate all thermal stresses in the underlying superalloy.",
+    "evidence_excerpt": "Ceramic thermal barrier coatings reduce underlying substrate metal temperature by 50 to 100 degrees C, reducing but not eliminating thermal gradients.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "failure modes",
+    "claim_type": "description",
+    "rationale": "False absolute claim: Evidence states coatings reduce substrate temperature, directly refuting the claim that thermal stresses are completely eliminated."
+  },
+  {
+    "case_id": "CV-29",
+    "claim": "Engine casing containment is designed to contain catastrophic multi-stage rotor burst debris.",
+    "evidence_excerpt": "AC 33.75-1A states that containment testing validates containment of a single released blade; containment of a full burst disk or multi-stage rotor burst is considered impractical.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "effects",
+    "claim_type": "regulatory",
+    "rationale": "Contradictory claim: Regulatory standard explicitly states disk burst containment is impractical, contradicting the claim that casings contain multi-stage rotor bursts."
+  },
+  {
+    "case_id": "CV-30",
+    "claim": "Bird ingestion into the low-pressure fan generates immediate sulfidation corrosion on turbine airfoils.",
+    "evidence_excerpt": "Sulfidation occurs due to sulfur content in jet fuel reacting with hot sodium chloride deposits at metal temperatures above 700 degrees C.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "causes",
+    "claim_type": "causal",
+    "rationale": "Thematic and causal absurdity: Bird ingestion at the fan does not cause immediate hot-gas sulfidation corrosion in the turbine."
+  },
+  {
+    "case_id": "CV-31",
+    "claim": "Microstructural grain boundary sliding accelerates high temperature turbine blade deformation.",
+    "evidence_excerpt": "General discussion of turbine blade alloy selection and mechanical properties under engine operating conditions.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "INSUFFICIENT_EVIDENCE",
+    "category": "causes",
+    "claim_type": "causal",
+    "rationale": "Evidence is too high-level and generic to substantiate the specific grain boundary sliding microstructural mechanism."
+  },
+  {
+    "case_id": "CV-32",
+    "claim": "Modern engine designs incorporate sufficient structural margin to preclude creep rupture under typical mission profiles.",
+    "evidence_excerpt": "Compliance with CS-E 510 requires evaluating structural margins across all certified engine operating regimes.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "INSUFFICIENT_EVIDENCE",
+    "category": "failure modes",
+    "claim_type": "description",
+    "rationale": "Vague regulatory statement of intent does not prove whether actual physical margins preclude creep rupture."
+  },
+  {
+    "case_id": "CV-33",
+    "claim": "Borescope inspection of hot section parts detects 95 percent of all fatigue cracks before rupture.",
+    "evidence_excerpt": "Borescope inspections provide optical access to assess airfoil health and detect visible surface cracking.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "INSUFFICIENT_EVIDENCE",
+    "category": "detection",
+    "claim_type": "quantitative",
+    "rationale": "Evidence supports optical inspection capability in general, but provides zero statistical data to verify the exact '95 percent' probability of detection."
+  },
+  {
+    "case_id": "CV-34",
+    "claim": "Engine vibration monitoring always warns flight crews prior to turbine blade liberation.",
+    "evidence_excerpt": "Engine health monitoring and vibration sensors can detect rotor imbalance caused by severe damage or partial blade loss.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "INSUFFICIENT_EVIDENCE",
+    "category": "detection",
+    "claim_type": "description",
+    "rationale": "Passage states vibration sensors can detect rotor imbalance, but does not substantiate the absolute claim that it 'always warns flight crews prior to liberation'."
+  },
+  {
+    "case_id": "CV-35",
+    "claim": "All single point failures can be eliminated through redundant aerodynamic architectures.",
+    "evidence_excerpt": "NASA-STD-8729.1A outlines methods for identifying single failure points and assessing where redundancy or operational workarounds are required.",
+    "source_doc": "NASA-STD-8729.1A.pdf",
+    "expected_label": "INSUFFICIENT_EVIDENCE",
+    "category": "criticality",
+    "claim_type": "description",
+    "rationale": "Standard discusses identifying SFPs, but does not substantiate that all single failure points can be eliminated aerodynamically."
+  },
+  {
+    "case_id": "CV-36",
+    "claim": "CFM56 HPT Stage 1 blade P/N 301-789-204-0 experiences creep rupture after 5,000 cycles.",
+    "evidence_excerpt": "High pressure turbine blades in gas turbine engines are subjected to high centrifugal stresses and gas temperatures that can cause creep deformation and rupture.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "component classification",
+    "claim_type": "component-specific",
+    "rationale": "Component overreach: General discussion of turbine blade creep in a regulatory standard does not support an assertion about a specific CFM56 part number or cycle limit."
+  },
+  {
+    "case_id": "CV-37",
+    "claim": "GE90 Stage 2 High Pressure Turbine Airfoil P/N 1845M12P01 is certified for 15,000 flight hours without replacement.",
+    "evidence_excerpt": "Turbine rotor life limits and maintenance intervals must be specified in the Instructions for Continued Airworthiness (ICA) submitted for engine type certification.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "maintenance",
+    "claim_type": "component-specific",
+    "rationale": "Component overreach: Generic requirement to submit an ICA does not support a specific 15,000 flight hour certification for GE90 P/N 1845M12P01."
+  },
+  {
+    "case_id": "CV-38",
+    "claim": "The CFM56-7B engine high pressure turbine blade has an operational failure rate lambda_p of 1.2e-6 failures per hour.",
+    "evidence_excerpt": "MIL-STD-1629A outlines the quantitative criticality procedure using part failure rates lambda_p obtained from operational history or reliability handbooks.",
+    "source_doc": "MIL-STD-1629A.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "criticality",
+    "claim_type": "component-specific",
+    "rationale": "Component overreach: General methodology standard does not contain proprietary CFM56-7B operational failure rates."
+  },
+  {
+    "case_id": "CV-39",
+    "claim": "Trent 1000 intermediate pressure compressor rotor blade P/N 451-098-112 exhibits fretting fatigue at the dovetail root.",
+    "evidence_excerpt": "EASA CS-E discusses engine rotor structural integrity requirements and fatigue evaluation methodology under CS-E 510.",
+    "source_doc": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_label": "UNSUPPORTED",
+    "category": "failure modes",
+    "claim_type": "component-specific",
+    "rationale": "Component overreach: Regulatory framework does not provide specific evidence for Trent 1000 P/N 451-098-112 dovetail fretting."
+  },
+  {
+    "case_id": "CV-40",
+    "claim": "CFM56 HPT Stage 1 blade P/N 301-789-204-0 is susceptible to high temperature thermal fatigue.",
+    "evidence_excerpt": "High temperature turbine blades in commercial turbofan engines experience cyclic thermal stresses during engine start, takeoff, and shutdown cycles that can cause thermal fatigue cracking.",
+    "source_doc": "FAA_AC_33.75-1A.pdf",
+    "expected_label": "SUPPORTING_SOURCE",
+    "category": "component classification",
+    "claim_type": "component-specific",
+    "rationale": "Downgraded support: General turbofan turbine blade thermal fatigue principle materially supports the physical vulnerability, but cannot be DIRECT_SOURCE because the specific part number is not in the text."
+  }
+]

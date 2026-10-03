@@ -1,0 +1,875 @@
+<USER_REQUEST>
+# FMEA-GPT Phase 5E — Targeted Aerospace Engineering Knowledge Expansion
+
+Repository:
+
+```text
+C:\fmeagpt
+```
+
+Phase 5D established that the current retrieval architecture is no longer the dominant bottleneck.
+
+The current selected retrieval architecture is:
+
+```text
+Default:
+Section-Aware Dense Retrieval
+
+Deep Audit:
+Section-Aware Hybrid Dense + BM25 + Controlled Terminology Expansion
+```
+
+The Phase 5D benchmark identifies genuine corpus gaps, especially:
+
+* thermal fatigue
+* turbine blade cooling physics
+* cooling passage blockage
+* thermal barrier coating degradation
+* detailed fretting/contact mechanics
+* quantitative component reliability data
+* structured criticality equations
+
+The purpose of Phase 5E is to address only the **verified knowledge gaps** using a small, authoritative technical corpus and better mathematical/technical extraction.
+
+---
+
+# CRITICAL RULES
+
+## 1. Do NOT modify frontend
+
+Do not modify:
+
+```text
+frontend/
+```
+
+---
+
+## 2. Do NOT redesign LangGraph
+
+Do not modify:
+
+```text
+src/agents/graph.py
+```
+
+except for a minimal interface addition if absolutely necessary.
+
+---
+
+## 3. Do NOT redesign the claim verifier
+
+Do not redesign:
+
+```text
+src/agents/nodes/claim_verifier.py
+```
+
+The verifier remains downstream of retrieval.
+
+---
+
+## 4. Do NOT redesign the engineering schema
+
+Do not fundamentally modify:
+
+```text
+src/agents/state.py
+```
+
+unless an additive field is genuinely needed for technical-source metadata or formula provenance.
+
+---
+
+# PART A — GAP-DRIVEN CORPUS RESEARCH
+
+## 5. Inspect the existing retrieval failure analysis
+
+Read:
+
+```text
+docs/phase5d_failure_analysis.md
+docs/phase5d_experiment_report.md
+docs/phase5d_implementation_report.md
+tests/retrieval_ground_truth.json
+```
+
+Produce:
+
+```text
+docs/phase5e_gap_analysis.md
+```
+
+List the actual knowledge gaps ranked by impact.
+
+For each gap identify:
+
+```text
+gap
+affected benchmark queries
+engineering capability affected
+current corpus limitation
+source type needed
+```
+
+Do not invent gaps.
+
+---
+
+# 6. Define source requirements BEFORE downloading anything
+
+Create a source-requirements table:
+
+| Gap | Required Technical Knowledge | Preferred Source Type | Minimum Evidence Needed |
+| --- | ---------------------------- | --------------------- | ----------------------- |
+
+Examples:
+
+```text
+Thermal fatigue
+→ turbine blade thermal gradients, cyclic stress, crack initiation
+
+Cooling
+→ film cooling, serpentine cooling passages, blockage/degradation
+
+Fretting
+→ blade root / dovetail contact mechanics and fretting fatigue
+
+TBC degradation
+→ coating oxidation, spallation, thermal cycling
+
+Reliability
+→ failure-rate methodology or public reliability datasets
+```
+
+Do not automatically assume these examples are all required. Verify them against the benchmark failures.
+
+---
+
+# 7. Acquire a SMALL authoritative corpus
+
+Target:
+
+```text
+3–5 high-value technical sources
+```
+
+not dozens of documents.
+
+Prefer sources from authoritative organizations such as:
+
+* NASA
+* FAA
+* government technical reports
+* recognized aerospace research institutions
+* established technical handbooks
+
+Avoid:
+
+* random blogs
+* commercial SEO pages
+* unsourced summaries
+* AI-generated documents
+* vendor marketing pages
+
+For every acquired source record:
+
+```text
+source_id
+title
+publisher
+publication_year
+document_type
+URL
+download_date
+authority_basis
+gap_addressed
+```
+
+Add metadata to:
+
+```text
+data/metadata/sources.json
+```
+
+Do not overwrite existing provenance.
+
+---
+
+# 8. Research first, download second
+
+Before downloading each source:
+
+1. Explain why it addresses a measured gap.
+2. Identify the relevant chapter/section.
+3. Identify which benchmark failures it should improve.
+4. Record expected technical concepts.
+
+Create:
+
+```text
+docs/phase5e_source_selection.md
+```
+
+Only then download the source.
+
+---
+
+# PART B — TECHNICAL DOCUMENT PREPROCESSING
+
+# 9. Audit mathematical extraction
+
+Inspect current:
+
+```text
+src/rag/document_loader.py
+src/rag/section_chunker.py
+```
+
+Determine how the system handles:
+
+* equations
+* Greek symbols
+* subscripts
+* superscripts
+* variable names
+* units
+* tables
+* numbered formulas
+
+Do not assume PDF text extraction preserved mathematical meaning.
+
+---
+
+# 10. Create structured formula extraction
+
+Create something such as:
+
+```text
+src/rag/formula_extractor.py
+```
+
+The implementation must preserve both:
+
+```text
+display representation
+```
+
+and:
+
+```text
+machine representation
+```
+
+For example:
+
+```text
+display:
+Cm = β × α × λp × t
+
+machine:
+{
+  "name": "mode_criticality_number",
+  "expression": "beta * alpha * lambda_p * t",
+  "variables": ["beta", "alpha", "lambda_p", "t"],
+  "units": "...",
+  "source_document": "...",
+  "page_number": ...
+}
+```
+
+Do NOT invent units.
+
+Do NOT infer missing variable definitions.
+
+---
+
+# 11. Formula provenance is mandatory
+
+Every indexed formula must retain:
+
+```text
+formula_id
+source_document
+page_number
+section
+raw_text
+normalized_expression
+variable_definitions
+units_if_explicit
+```
+
+If normalization changes the original expression, preserve the original form.
+
+Never discard the source representation.
+
+---
+
+# 12. Handle tables explicitly
+
+Many engineering standards contain critical information in tables.
+
+Inspect whether current extraction preserves:
+
+```text
+row headers
+column headers
+table relationships
+units
+footnotes
+notes
+```
+
+If table extraction is unreliable, document the limitation.
+
+Do not silently flatten a table into misleading prose.
+
+---
+
+# PART C — ENGINEERING KNOWLEDGE INDEX
+
+# 13. Add technical source metadata
+
+Extend stored document metadata where appropriate:
+
+```text
+source_authority
+engineering_domain
+document_level
+technical_topic
+contains_equations
+contains_tables
+```
+
+Possible technical-domain values:
+
+```text
+turbine_blade
+cooling
+materials
+fatigue
+fracture
+reliability
+maintenance
+safety_analysis
+```
+
+Do not make these values authoritative engineering facts. They are indexing metadata.
+
+---
+
+# 14. Preserve source hierarchy
+
+Technical documents should retain:
+
+```text
+document
+chapter
+section
+subsection
+page
+paragraph
+table
+equation
+```
+
+where available.
+
+This should flow into retrieval results.
+
+---
+
+# PART D — TARGETED INDEXING
+
+# 15. Do not immediately re-index everything
+
+Create an isolated experimental store:
+
+```text
+data/chroma_db_phase5e/
+```
+
+Keep:
+
+```text
+data/chroma_db/
+data/chroma_db_phase5d_sectioned/
+```
+
+unchanged.
+
+---
+
+# 16. Build the Phase 5E index
+
+Index the new technical sources using the Phase 5D section-aware chunking strategy.
+
+Add specialized records for:
+
+```text
+equation blocks
+table blocks
+technical definitions
+```
+
+Do not duplicate the same content unnecessarily.
+
+---
+
+# PART E — BENCHMARK IMPROVEMENT
+
+# 17. Re-run the exact Phase 5D benchmark
+
+Do NOT modify the existing ground truth before evaluation.
+
+Run:
+
+```bash
+python tests/retrieval_evaluation.py
+```
+
+against:
+
+```text
+Phase 5D baseline
+Phase 5D selected configuration
+Phase 5E expanded corpus
+```
+
+Compare:
+
+```text
+Precision@1
+Precision@3
+Recall@3
+Recall@5
+MRR
+```
+
+and per-category metrics.
+
+---
+
+# 18. Focus on previously failing categories
+
+Specifically evaluate:
+
+```text
+thermal fatigue
+cooling
+FOD
+maintenance
+criticality
+single point failure
+```
+
+Report:
+
+```text
+before
+after
+delta
+```
+
+Do not count a gain in unrelated categories as proof that the corpus expansion solved the target gap.
+
+---
+
+# 19. Corpus-gap resolution metric
+
+Create a simple gap metric:
+
+```text
+gap_resolution_rate =
+resolved_gaps / identified_gaps
+```
+
+Only count a gap as resolved when the new corpus produces relevant evidence in the retrieval benchmark.
+
+Do not mark a gap resolved merely because a PDF was downloaded.
+
+---
+
+# PART F — FORMULA EVALUATION
+
+# 20. Create a formula benchmark
+
+Create:
+
+```text
+tests/formula_ground_truth.json
+```
+
+with at least:
+
+```text
+10 known formulas / mathematical statements
+```
+
+taken from the indexed corpus.
+
+For each record preserve:
+
+```text
+source
+page
+formula
+variables
+units if explicitly available
+```
+
+---
+
+# 21. Test formula extraction
+
+Create:
+
+```text
+tests/test_formula_extraction.py
+```
+
+Test:
+
+* formula text preservation
+* variable preservation
+* Greek symbol normalization
+* page provenance
+* no invented variables
+* no invented units
+
+---
+
+# 22. Test semantic formula retrieval
+
+Queries such as:
+
+```text
+mode criticality number equation
+
+criticality calculation parameters
+
+conditional probability beta
+
+failure rate lambda p
+
+operating time criticality
+```
+
+must retrieve the equation/definition record when it exists.
+
+Do not rely only on natural-language paragraphs.
+
+---
+
+# PART G — ADAPTIVE RETRIEVAL ROUTING
+
+# 23. Evaluate an adaptive query router
+
+Do NOT immediately make this production-default.
+
+Build an experimental router.
+
+Conceptually:
+
+```text
+Query
+ ↓
+Query classifier
+ ├── short technical fact
+ │      ↓
+ │  Section-aware Dense
+ │
+ ├── terminology-heavy / cross-reference
+ │      ↓
+ │  Hybrid + Terminology Expansion
+ │
+ └── mathematical / formula query
+        ↓
+    Formula-aware retrieval
+```
+
+The router must be deterministic and inspectable.
+
+Do not use an LLM just to decide which retriever to call unless there is a measured reason.
+
+---
+
+# 24. Benchmark the router
+
+Compare:
+
+```text
+static Section-Aware Dense
+```
+
+against:
+
+```text
+adaptive routing
+```
+
+using the same benchmark.
+
+Report:
+
+```text
+P@1
+P@3
+R@3
+R@5
+MRR
+latency
+routing accuracy
+```
+
+Only adopt adaptive routing if it improves the benchmark meaningfully.
+
+---
+
+# PART H — NO DATA FABRICATION
+
+# 25. Reliability data
+
+The Phase 5D report identifies missing:
+
+```text
+lambda_p
+alpha
+beta
+t
+```
+
+for component-specific quantitative criticality.
+
+Do NOT invent these.
+
+Do not derive fleet failure rates from unrelated data.
+
+If a public source contains useful reliability data:
+
+```text
+preserve source
+scope
+population
+time period
+units
+limitations
+```
+
+Do not generalize it beyond the source's population.
+
+---
+
+# PART I — ENGINEERING CLAIM TEST
+
+# 26. Re-run an end-to-end HPT example
+
+Use:
+
+```text
+CFM56 High Pressure Turbine Stage 1 Rotor Blade
+```
+
+Compare Phase 5D vs Phase 5E.
+
+For at least one failure mode show:
+
+```text
+candidate
+→ targeted query
+→ retrieved technical evidence
+→ claim verification
+→ severity/criticality evidence
+→ final FMEA entry
+```
+
+Do not compare only the final text.
+
+Compare the evidence chain.
+
+---
+
+# PART J — HARD-CODED KNOWLEDGE
+
+# 27. Audit remaining heuristics
+
+Find remaining hard-coded:
+
+```text
+failure modes
+mechanism dictionaries
+ATA mappings
+classification rules
+synonyms
+inspection intervals
+material properties
+sensor mappings
+criticality defaults
+```
+
+Do not necessarily remove them.
+
+Classify each:
+
+```text
+INDEXING HEURISTIC
+DISCOVERY HEURISTIC
+VALIDATION RULE
+ENGINEERING FACT
+UNVERIFIED DOMAIN HEURISTIC
+```
+
+Any unverified engineering heuristic must remain explicitly labeled.
+
+---
+
+# PART K — REGRESSION
+
+# 28. Existing behavior must remain stable
+
+Run:
+
+```bash
+pytest tests/
+```
+
+Do not delete existing tests.
+
+Do not weaken expected assertions simply to accommodate a regression.
+
+---
+
+# 29. Add Phase 5E tests
+
+Create:
+
+```text
+tests/test_phase5e_knowledge.py
+```
+
+Test:
+
+1. new source metadata
+2. technical domain tagging
+3. formula extraction
+4. formula provenance
+5. table provenance where supported
+6. isolated Phase 5E index
+7. retrieval of newly acquired knowledge
+8. corpus-gap improvement
+9. no invented reliability values
+10. adaptive routing
+11. provenance preservation
+12. regression against Phase 5D behavior
+
+---
+
+# PART L — BEFORE/AFTER EXPERIMENT
+
+# 30. Produce a direct comparison
+
+Create:
+
+```text
+docs/phase5e_before_after.md
+```
+
+For each target gap:
+
+```text
+Before:
+What evidence was available?
+
+After:
+What new evidence became retrievable?
+
+Benchmark:
+Did retrieval improve?
+
+Engineering effect:
+What new reasoning capability became possible?
+```
+
+---
+
+# PART M — REQUIRED REPORTS
+
+Create:
+
+```text
+docs/phase5e_gap_analysis.md
+docs/phase5e_source_selection.md
+docs/phase5e_knowledge_architecture.md
+docs/phase5e_formula_extraction.md
+docs/phase5e_before_after.md
+docs/phase5e_implementation_report.md
+```
+
+---
+
+# PART N — SUCCESS CRITERIA
+
+Phase 5E is successful only if:
+
+```text
+1. Every downloaded source addresses a documented gap.
+2. The new corpus improves retrieval on at least some previously weak target queries.
+3. Improvements are measured against the frozen Phase 5D benchmark.
+4. Formula extraction preserves source provenance.
+5. No reliability values are invented.
+6. Existing retrieval architecture remains reproducible.
+7. Existing tests continue to pass.
+8. New technical knowledge is distinguishable from heuristic knowledge.
+```
+
+Do not judge success by number of PDFs downloaded.
+
+---
+
+# FINAL RESPONSE TO ME
+
+Report:
+
+1. Sources selected and why.
+2. Knowledge gaps addressed.
+3. Files changed.
+4. New corpus size.
+5. Before/after retrieval metrics.
+6. Per-category improvement.
+7. Gap resolution rate.
+8. Formula extraction performance.
+9. Adaptive routing performance.
+10. Remaining corpus gaps.
+11. Remaining hard-coded engineering heuristics.
+12. Total test count and result.
+13. One complete Phase 5E provenance example.
+14. Recommended Phase 5F.
+
+Do not claim:
+
+```text
+complete aerospace knowledge
+100% coverage
+engineering validated
+FAA/EASA compliant
+certification ready
+```
+
+The purpose of Phase 5E is to make FMEA-GPT's knowledge base **deeper where the benchmark proves it is shallow**, while preserving measurable evidence provenance.
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-03T00:41:47+05:30.
+
+The user's current state is as follows:
+Active Document: c:\fmeagpt\frontend\index.html (LANGUAGE_HTML)
+Cursor is on line: 1
+Other open documents:
+- c:\fmeagpt\frontend\index.html (LANGUAGE_HTML)
+- c:\fmeagpt\frontend\src\index.css (LANGUAGE_CSS)
+- c:\fmeagpt\frontend\src\App.jsx (LANGUAGE_JAVASCRIPT)
+No browser pages are currently open.
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from Gemini 3.8 Flash (High) to Claude Opus 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

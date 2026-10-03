@@ -1,0 +1,170 @@
+[
+  {
+    "query_id": "EVAL-01",
+    "category": "thermal fatigue",
+    "query": "high pressure turbine blade thermomechanical fatigue cyclic thermal stress",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["cyclic thermal stress", "thermal fatigue", "turbine blade", "engine safety"],
+    "min_expected_similarity": 0.60
+  },
+  {
+    "query_id": "EVAL-02",
+    "category": "thermal fatigue",
+    "query": "transient thermal gradients start stop cycles turbine airfoil cracking",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["thermal gradients", "cracking", "low cycle fatigue", "transients"],
+    "min_expected_similarity": 0.55
+  },
+  {
+    "query_id": "EVAL-03",
+    "category": "creep",
+    "query": "high pressure turbine blade creep rupture centrifugal load sustained high temperature",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["creep", "rupture", "centrifugal stress", "high temperature"],
+    "min_expected_similarity": 0.55
+  },
+  {
+    "query_id": "EVAL-04",
+    "category": "creep",
+    "query": "turbine blade creep elongation tip rubbing shroud damage",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["creep elongation", "shroud rubbing", "turbine blade"],
+    "min_expected_similarity": 0.55
+  },
+  {
+    "query_id": "EVAL-05",
+    "category": "FOD",
+    "query": "foreign object damage hard body ingestion compressor turbine leading edge notch",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["foreign object damage", "ingestion", "notch", "crack initiation"],
+    "min_expected_similarity": 0.55
+  },
+  {
+    "query_id": "EVAL-06",
+    "category": "FOD",
+    "query": "bird ingestion runway debris impact damage engine turbomachinery airfoils",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["bird ingestion", "impact damage", "debris"],
+    "min_expected_similarity": 0.55
+  },
+  {
+    "query_id": "EVAL-07",
+    "category": "blade fracture",
+    "query": "turbine rotor blade separation fracture release high energy fragment",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["blade separation", "blade fracture", "high energy fragment"],
+    "min_expected_similarity": 0.60
+  },
+  {
+    "query_id": "EVAL-08",
+    "category": "blade fracture",
+    "query": "airfoil root liberation dovetail fir tree serration fracture",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["root liberation", "fracture", "dovetail", "blade release"],
+    "min_expected_similarity": 0.55
+  },
+  {
+    "query_id": "EVAL-09",
+    "category": "containment",
+    "query": "turbine casing containment blade containment test uncontained debris fragment",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["containment", "casing", "uncontained debris", "blade fragment"],
+    "min_expected_similarity": 0.60
+  },
+  {
+    "query_id": "EVAL-10",
+    "category": "containment",
+    "query": "uncontained engine failure casing penetration non-containment hazardous effect",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["uncontained engine failure", "casing penetration", "hazardous effect"],
+    "min_expected_similarity": 0.60
+  },
+  {
+    "query_id": "EVAL-11",
+    "category": "hazardous engine effects",
+    "query": "14 CFR 33.75 hazardous engine effect uncontained debris toxic products complete thrust loss",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["hazardous engine effect", "14 CFR 33.75", "uncontained", "thrust loss"],
+    "min_expected_similarity": 0.65
+  },
+  {
+    "query_id": "EVAL-12",
+    "category": "hazardous engine effects",
+    "query": "EASA CS-E 510 safety analysis hazardous engine effect major engine effect definition",
+    "expected_document": "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+    "expected_topics": ["CS-E 510", "hazardous engine effect", "major engine effect", "safety analysis"],
+    "min_expected_similarity": 0.60
+  },
+  {
+    "query_id": "EVAL-13",
+    "category": "maintenance",
+    "query": "borescope inspection interval on wing maintenance manual crack rejection limit",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["inspection interval", "maintenance", "rejection limit"],
+    "min_expected_similarity": 0.55
+  },
+  {
+    "query_id": "EVAL-14",
+    "category": "maintenance",
+    "query": "critical part life management engine maintenance manual inspection cycle flight hours",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["critical part", "life management", "inspection cycle"],
+    "min_expected_similarity": 0.55
+  },
+  {
+    "query_id": "EVAL-15",
+    "category": "NDT",
+    "query": "nondestructive inspection fluorescent penetrant eddy current ultrasonic surface crack detection",
+    "expected_document": "MIL-STD-1629A.pdf",
+    "expected_topics": ["nondestructive inspection", "eddy current", "crack detection", "NDT"],
+    "min_expected_similarity": 0.55
+  },
+  {
+    "query_id": "EVAL-16",
+    "category": "NDT",
+    "query": "borescope optical inspection internal hot gas path turbine blade thermal barrier coating",
+    "expected_document": "FAA_AC_33.75-1A.pdf",
+    "expected_topics": ["borescope", "optical inspection", "thermal barrier coating", "hot section"],
+    "min_expected_similarity": 0.55
+  },
+  {
+    "query_id": "EVAL-17",
+    "category": "criticality",
+    "query": "MIL-STD-1629A Task 102 criticality analysis mode criticality number beta alpha lambda_p t",
+    "expected_document": "MIL-STD-1629A.pdf",
+    "expected_topics": ["Task 102", "criticality analysis", "mode criticality", "failure rate"],
+    "min_expected_similarity": 0.65
+  },
+  {
+    "query_id": "EVAL-18",
+    "category": "criticality",
+    "query": "NASA-STD-8729.1A Critical Items List qualitative criticality analysis category I category II",
+    "expected_document": "NASA-STD-8729.1A.pdf",
+    "expected_topics": ["Critical Items List", "qualitative criticality", "Category I", "Category II"],
+    "min_expected_similarity": 0.65
+  },
+  {
+    "query_id": "EVAL-19",
+    "category": "severity",
+    "query": "MIL-STD-1629A severity classification Category I Catastrophic Category II Critical Category III Marginal Category IV Minor",
+    "expected_document": "MIL-STD-1629A.pdf",
+    "expected_topics": ["severity classification", "Category I", "Catastrophic", "Category II", "Critical"],
+    "min_expected_similarity": 0.70
+  },
+  {
+    "query_id": "EVAL-20",
+    "category": "single point failure",
+    "query": "single point failure definition retention on Critical Items List lack of redundancy",
+    "expected_document": "NASA-STD-8729.1A.pdf",
+    "expected_topics": ["single point failure", "Critical Items List", "redundancy"],
+    "min_expected_similarity": 0.65
+  },
+  {
+    "query_id": "EVAL-21",
+    "category": "single point failure",
+    "query": "FAA AC 25.1309 single failure condition catastrophic effect safety assessment",
+    "expected_document": "FAA_AC_25.1309-1B.pdf",
+    "expected_topics": ["single failure condition", "catastrophic effect", "safety assessment"],
+    "min_expected_similarity": 0.65
+  }
+]

@@ -1,0 +1,70 @@
+# FMEA-GPT Phase 5D — Retrieval Configuration
+# Reproducible parameters for Section-Aware Chunking, Hybrid Retrieval, Fusion, and Reranking
+
+retrieval_phase: "5D"
+version: "1.0.0"
+
+# Storage paths
+stores:
+  baseline_chroma_dir: "data/chroma_db"
+  baseline_collection_name: "fmea_aerospace_knowledge"
+  sectioned_chroma_dir: "data/chroma_db_phase5d_sectioned"
+  sectioned_collection_name: "fmea_aerospace_knowledge_sectioned"
+  active_store: "sectioned"
+
+# Section-Aware Chunking Parameters
+chunking:
+  target_chunk_size: 1000
+  max_chunk_size: 1400
+  min_chunk_size: 150
+  chunk_overlap: 150
+  heading_detection_enabled: true
+  cross_page_stitching: true
+  header_dilution_mitigation: true
+
+# Dense Semantic Retrieval Settings
+dense:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  runtime: "onnx_cpu"
+  dimension: 384
+  metric: "cosine"
+  top_k: 5
+  candidate_pool_size: 20
+
+# BM25 Lexical Retrieval Settings
+bm25:
+  enabled: true
+  k1: 1.5
+  b: 0.75
+  tokenizer: "tokenize_aerospace_text"
+  preserve_acronyms: true
+  preserve_sections: true
+
+# Reciprocal Rank Fusion (RRF) Settings
+fusion:
+  method: "reciprocal_rank_fusion"
+  rrf_k: 60
+  weight_dense: 1.0
+  weight_bm25: 1.0
+
+# Controlled Technical Terminology Expansion
+query_expansion:
+  enabled: false # Enabled for high-recall ablation mode; disabled for high-precision mode
+  max_expansions_per_term: 2
+  synonym_map: "src/rag/terminology_expansion.py"
+
+# Local Reranker Settings
+reranker:
+  enabled: false # Evaluated in ablation; rejected per acceptance rule (MRR drop + latency penalty)
+  top_n_candidates: 15
+  weight_dense: 0.40
+  weight_bm25: 0.35
+  weight_phrase: 0.15
+  weight_section: 0.10
+
+# Evaluation Benchmarks
+benchmarks:
+  ground_truth_file: "tests/retrieval_ground_truth.json"
+  eval_queries_file: "tests/evaluation_queries.json"
+  frozen_baseline_file: "tests/retrieval_baseline_phase5d.json"
+  ablation_results_file: "scratch/ablation_study_results.json"

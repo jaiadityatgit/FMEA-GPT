@@ -1,0 +1,709 @@
+[
+  {
+    "query_id": "RET-01",
+    "query": "thermal stress cyclic gradients transient temperatures structural fatigue",
+    "category": "thermal fatigue",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "NASA-STD-8729.1A.pdf",
+      "NASA_SP-2016-6105_Rev2_SE_Handbook.pdf",
+      "NASA_TP_2013_217830_Turbine_Blade_Life.pdf",
+      "NASA_Fatigue_Life_Prediction_Hot_Section.pdf"
+    ],
+    "relevant_pages": [
+      13,
+      37
+    ],
+    "relevant_topics": [
+      "thermal stress",
+      "cyclic loading",
+      "fatigue",
+      "thermal gradients"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "NASA-STD-8729.1A \u00a7 4.3 (thermal stress design margins) and NASA/TP-2013-217030 / NASA HOST Creep-Fatigue isotropic cyclic strain accumulation."
+  },
+  {
+    "query_id": "RET-02",
+    "query": "high pressure turbine blade thermomechanical fatigue TMF cracking start stop cycles",
+    "category": "thermal fatigue",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "NASA_C-MAPSS_Damage_Propagation_Modeling.pdf",
+      "NASA-STD-8729.1A.pdf",
+      "NASA_TP_2013_217830_Turbine_Blade_Life.pdf",
+      "NASA_Fatigue_Life_Prediction_Hot_Section.pdf"
+    ],
+    "relevant_pages": [
+      13
+    ],
+    "relevant_topics": [
+      "cyclic thermal stress",
+      "thermal fatigue",
+      "airfoil degradation"
+    ],
+    "ground_truth_granularity": "document",
+    "ground_truth_basis": "NASA C-MAPSS damage propagation modeling and NASA/TP-2013-217030 (CFM56 airline overhaul field data on TMF cracking)."
+  },
+  {
+    "query_id": "RET-03",
+    "query": "turbine rotor stress rupture creep sustained centrifugal load high temperature",
+    "category": "creep",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      76,
+      93
+    ],
+    "relevant_topics": [
+      "creep",
+      "stress rupture",
+      "centrifugal load",
+      "temperature limits"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "EASA CS-E 510 / CS-E 840 (rotor integrity) and CS-E 740 (temperature and stress rupture limits)."
+  },
+  {
+    "query_id": "RET-04",
+    "query": "turbine blade creep elongation tip rubbing shroud damage clearance loss",
+    "category": "creep",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+      "NASA_C-MAPSS_Damage_Propagation_Modeling.pdf"
+    ],
+    "relevant_pages": [
+      76
+    ],
+    "relevant_topics": [
+      "creep elongation",
+      "shroud rubbing",
+      "tip clearance"
+    ],
+    "ground_truth_granularity": "document",
+    "ground_truth_basis": "EASA CS-E 510 (blade-casing clearance limits) and NASA C-MAPSS blade clearance degradation modeling."
+  },
+  {
+    "query_id": "RET-05",
+    "query": "foreign object damage bird ingestion runway debris impact compressor blade notch",
+    "category": "FOD",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+      "FAA_AC_33.75-1A.pdf"
+    ],
+    "relevant_pages": [
+      105
+    ],
+    "relevant_topics": [
+      "foreign object",
+      "bird ingestion",
+      "impact damage",
+      "blade distortion"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "EASA CS-E 800 / CS-E 810 (bird strike ingestion) and FAA AC 33.75-1A \u00a7 33.75(a)(3) (environmental ingestion)."
+  },
+  {
+    "query_id": "RET-06",
+    "query": "hard body debris ingestion engine inlet leading edge impact damage",
+    "category": "FOD",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      105
+    ],
+    "relevant_topics": [
+      "foreign object damage",
+      "debris ingestion",
+      "airfoil notch"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "FAA AC 33.75-1A \u00a7 33.75(b) (foreign object containment and notch fatigue crack initiation)."
+  },
+  {
+    "query_id": "RET-07",
+    "query": "rotor blade separation fracture blade release containment capability",
+    "category": "blade fracture",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf",
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      11,
+      102
+    ],
+    "relevant_topics": [
+      "blade release",
+      "blade fracture",
+      "separation",
+      "containment"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "EASA CS-E 510 AMC E 510 \u00a7 3 and FAA AC 33.75-1A (HCF aerodynamic resonant excitation)."
+  },
+  {
+    "query_id": "RET-08",
+    "query": "airfoil root liberation dovetail fir tree serration fatigue fracture",
+    "category": "blade fracture",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf",
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      11
+    ],
+    "relevant_topics": [
+      "root liberation",
+      "fracture",
+      "dovetail",
+      "blade release"
+    ],
+    "ground_truth_granularity": "document",
+    "ground_truth_basis": "EASA CS-E 650 (Vibration Surveys & Campbell diagram resonant crossing clearance) and FAA AC 33.75-1A."
+  },
+  {
+    "query_id": "RET-09",
+    "query": "uncontained high-energy debris fragment hazard engine casing penetration",
+    "category": "blade release / uncontained debris",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf",
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      7,
+      10,
+      84
+    ],
+    "relevant_topics": [
+      "uncontained high-energy debris",
+      "casing penetration",
+      "hazardous engine effect"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "FAA AC 33.75-1A \u00a7 33.75(g)(2) and EASA CS-E 510 (Hazardous Engine Effect definition: uncontained high-energy debris)."
+  },
+  {
+    "query_id": "RET-10",
+    "query": "14 CFR 33.75 non-containment high energy rotor burst blade liberation",
+    "category": "blade release / uncontained debris",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf",
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      10,
+      11,
+      84
+    ],
+    "relevant_topics": [
+      "non-containment",
+      "rotor burst",
+      "high-energy debris"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "FAA AC 33.75-1A \u00a7 33.75(e) and EASA CS-E 810 / CS-E 520 (containment ring energy absorption capability)."
+  },
+  {
+    "query_id": "RET-11",
+    "query": "compressor bleed air cooling airflow turbine casing temperature management",
+    "category": "cooling system",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf",
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+      "NASA_Internal_Cooling_Passages_Heat_Transfer.pdf"
+    ],
+    "relevant_pages": [
+      11,
+      67,
+      149
+    ],
+    "relevant_topics": [
+      "bleed air",
+      "cooling",
+      "casing temperature"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "FAA AC 33.75-1A, EASA CS-E 510, and NASA-CR-198472 (heat transfer in rotating coolant passages)."
+  },
+  {
+    "query_id": "RET-12",
+    "query": "turbine blade internal cooling passage blockage particulate clogging heat transfer loss",
+    "category": "cooling system",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "NASA_Internal_Cooling_Passages_Heat_Transfer.pdf"
+    ],
+    "relevant_pages": [],
+    "relevant_topics": [
+      "cooling passage blockage",
+      "internal cooling",
+      "heat transfer degradation"
+    ],
+    "ground_truth_granularity": "document",
+    "ground_truth_basis": "NASA-CR-198472 (heat transfer coefficients in serpentine rotating coolant channels; flow starvation physics)."
+  },
+  {
+    "query_id": "RET-13",
+    "query": "fretting fatigue micro-motion dovetail root contact stress crack initiation",
+    "category": "fretting",
+    "query_type": "corpus_gap",
+    "corpus_gap": true,
+    "relevant_documents": [],
+    "relevant_pages": [],
+    "relevant_topics": [
+      "fretting fatigue",
+      "micro-motion",
+      "dovetail wear"
+    ],
+    "ground_truth_granularity": "document",
+    "ground_truth_basis": "Corpus gap query. No document in regulatory or current technical corpus covers contact mechanics at blade root dovetail contacts."
+  },
+  {
+    "query_id": "RET-14",
+    "query": "blade root fir-tree slot contact surface fretting wear galling",
+    "category": "fretting",
+    "query_type": "corpus_gap",
+    "corpus_gap": true,
+    "relevant_documents": [],
+    "relevant_pages": [],
+    "relevant_topics": [
+      "fretting wear",
+      "fir tree contact",
+      "galling"
+    ],
+    "ground_truth_granularity": "document",
+    "ground_truth_basis": "Corpus gap query. No document in regulatory or current technical corpus covers dovetail fir-tree fretting wear."
+  },
+  {
+    "query_id": "RET-15",
+    "query": "corrosion environmental degradation engine mount casing structural integrity",
+    "category": "corrosion",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf",
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      3,
+      12,
+      50
+    ],
+    "relevant_topics": [
+      "corrosion",
+      "structural degradation",
+      "engine mount"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "EASA CS-E 510 AMC E 510 and NASA-STD-8729.1A \u00a7 4.3 (environmental durability and hot corrosion attack)."
+  },
+  {
+    "query_id": "RET-16",
+    "query": "high temperature hot corrosion sulfidation thermal barrier coating spallation",
+    "category": "corrosion",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf",
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      3,
+      88
+    ],
+    "relevant_topics": [
+      "environmental degradation",
+      "hot corrosion",
+      "coating degradation"
+    ],
+    "ground_truth_granularity": "document",
+    "ground_truth_basis": "EASA CS-E 510 \u00a7 4 and NASA-STD-8729.1A \u00a7 5 (salt fog / marine environment corrosion testing)."
+  },
+  {
+    "query_id": "RET-17",
+    "query": "borescope optical inspection internal hot section crack detection scheduled check",
+    "category": "NDT / inspection",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf"
+    ],
+    "relevant_pages": [
+      8
+    ],
+    "relevant_topics": [
+      "borescope inspection",
+      "internal crack detection",
+      "scheduled inspection"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "EASA CS-E 510 AMC E 510 \u00a7 4 (Fluorescent Penetrant Inspection criteria for surface-breaking fatigue cracks)."
+  },
+  {
+    "query_id": "RET-18",
+    "query": "nondestructive inspection eddy current fluorescent penetrant ultrasonic flaw detection",
+    "category": "NDT / inspection",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+      "MIL-STD-1629A.pdf"
+    ],
+    "relevant_pages": [
+      18
+    ],
+    "relevant_topics": [
+      "non-destructive inspection",
+      "flaw detection",
+      "inspection techniques"
+    ],
+    "ground_truth_granularity": "document",
+    "ground_truth_basis": "EASA CS-E 510 AMC E 510 and NASA ASRS maintenance incident reports (borescope access and optical flaw limits)."
+  },
+  {
+    "query_id": "RET-19",
+    "query": "engine maintenance manual inspection intervals scheduled maintenance instructions",
+    "category": "maintenance",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf",
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      2,
+      8,
+      24
+    ],
+    "relevant_topics": [
+      "engine maintenance manual",
+      "inspection interval",
+      "instructions for continued airworthiness"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "EASA CS-E 510 AMC E 510 and FAA AC 33.75-1A \u00a7 4 (On-condition maintenance and scheduled overhaul intervals)."
+  },
+  {
+    "query_id": "RET-20",
+    "query": "preventive maintenance scheduled inspection flight cycles engine life limits",
+    "category": "maintenance",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "MIL-STD-1629A.pdf",
+      "FAA_AC_33.75-1A.pdf"
+    ],
+    "relevant_pages": [
+      16,
+      8
+    ],
+    "relevant_topics": [
+      "scheduled maintenance",
+      "inspection cycle",
+      "preventive maintenance"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "NASA ASRS Maintenance Incident Reports (maintenance human factors and cross-threading/torque error) and EASA CS-E 510."
+  },
+  {
+    "query_id": "RET-21",
+    "query": "14 CFR 33.75 hazardous engine effect uncontained debris complete thrust loss toxic cabin air",
+    "category": "hazardous engine effects",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf"
+    ],
+    "relevant_pages": [
+      3,
+      10,
+      13
+    ],
+    "relevant_topics": [
+      "hazardous engine effect",
+      "14 CFR 33.75",
+      "uncontained debris",
+      "thrust loss"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "FAA AC 33.75-1A \u00a7 33.75(g)(2) (statutory definition of Hazardous Engine Effects including uncontained debris and uncontrolled fire)."
+  },
+  {
+    "query_id": "RET-22",
+    "query": "EASA CS-E 510 hazardous engine effect major engine effect safety analysis criteria",
+    "category": "hazardous engine effects",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf",
+      "FAA_AC_33.75-1A.pdf"
+    ],
+    "relevant_pages": [
+      82,
+      84,
+      86
+    ],
+    "relevant_topics": [
+      "CS-E 510",
+      "hazardous engine effect",
+      "major engine effect",
+      "safety analysis"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "FAA AC 33.75-1A \u00a7 33.75(g)(2)(i) and EASA CS-E 510 \u00a7 3 (casing penetration by non-contained high-energy fragments)."
+  },
+  {
+    "query_id": "RET-23",
+    "query": "MIL-STD-1629A severity classification Category I Catastrophic Category II Critical Category III Marginal Category IV Minor",
+    "category": "severity",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "MIL-STD-1629A.pdf"
+    ],
+    "relevant_pages": [
+      5,
+      12,
+      16,
+      19
+    ],
+    "relevant_topics": [
+      "severity classification",
+      "Category I Catastrophic",
+      "Category II Critical",
+      "Category III Marginal",
+      "Category IV Minor"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "FAA AC 25.1309-1A \u00a7 8.d(1) and AC 25.1309-1B \u00a7 7 (Catastrophic Failure Condition definition: multiple fatalities / hull loss)."
+  },
+  {
+    "query_id": "RET-24",
+    "query": "FAA AC 25.1309 failure condition severity catastrophic hazardous major minor",
+    "category": "severity",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_25.1309-1B.pdf",
+      "FAA_AC_25.1309-1A.pdf"
+    ],
+    "relevant_pages": [
+      26,
+      41
+    ],
+    "relevant_topics": [
+      "failure condition",
+      "catastrophic",
+      "hazardous",
+      "major",
+      "minor"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "MIL-STD-1629A \u00a7 4.4.3.a (Severity Category I - Catastrophic definition) and FAA AC 25.1309-1B."
+  },
+  {
+    "query_id": "RET-25",
+    "query": "MIL-STD-1629A Task 102 criticality analysis mode criticality number Cm calculation beta alpha lambda",
+    "category": "criticality",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "MIL-STD-1629A.pdf"
+    ],
+    "relevant_pages": [
+      1,
+      27,
+      28,
+      29,
+      35
+    ],
+    "relevant_topics": [
+      "Task 102",
+      "criticality analysis",
+      "mode criticality number",
+      "failure effect probability"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "MIL-STD-1629A Task 102 \u00a7 4.5.2 (Mode Criticality Number equation: Cm = beta * alpha * lambda_p * t)."
+  },
+  {
+    "query_id": "RET-26",
+    "query": "item criticality number Cr summation failure mode criticality quantitative matrix",
+    "category": "criticality",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "MIL-STD-1629A.pdf"
+    ],
+    "relevant_pages": [
+      28,
+      29,
+      35
+    ],
+    "relevant_topics": [
+      "item criticality",
+      "criticality matrix",
+      "quantitative criticality"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "MIL-STD-1629A Task 102 \u00a7 4.5.3 (Item Criticality Number equation: Cr = sum(Cm))."
+  },
+  {
+    "query_id": "RET-27",
+    "query": "NASA-STD-8729.1A single failure point SFP Critical Items List CIL retention criteria",
+    "category": "single point failure",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "NASA-STD-8729.1A.pdf"
+    ],
+    "relevant_pages": [
+      20,
+      21,
+      22
+    ],
+    "relevant_topics": [
+      "single failure point",
+      "Critical Items List",
+      "CIL retention",
+      "redundancy"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "NASA-STD-8729.1A \u00a7 4.4 (Single Failure Point definition, elimination, and retention rationale requirements)."
+  },
+  {
+    "query_id": "RET-28",
+    "query": "FAA AC 25.1309 single failure condition catastrophic effect safety assessment redundancy",
+    "category": "single point failure",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_25.1309-1B.pdf",
+      "FAA_AC_25.1309-1A.pdf"
+    ],
+    "relevant_pages": [
+      26,
+      41,
+      42
+    ],
+    "relevant_topics": [
+      "single failure considerations",
+      "catastrophic failure conditions",
+      "redundancy"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "NASA-STD-8729.1A \u00a7 4.4.2 (Critical Items List Category 1/1R identification) and NASA SP-2016-6105."
+  },
+  {
+    "query_id": "RET-29",
+    "query": "NASA qualitative criticality analysis Category 1 catastrophic loss of life Category 2 loss of mission",
+    "category": "criticality",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "NASA-STD-8729.1A.pdf"
+    ],
+    "relevant_pages": [
+      15,
+      16
+    ],
+    "relevant_topics": [
+      "qualitative criticality",
+      "Category 1",
+      "Category 2",
+      "loss of life"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "MIL-STD-1629A Task 102 Table 102.1 (Conditional probability beta values: actual loss = 1.0, probable = 0.1-1.0, possible = 0-0.1, none = 0)."
+  },
+  {
+    "query_id": "RET-30",
+    "query": "uncontrolled fire engine nacelle structural mounts toxic air products hazardous classification",
+    "category": "hazardous engine effects",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf",
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      10,
+      12,
+      84
+    ],
+    "relevant_topics": [
+      "uncontrolled fire",
+      "hazardous engine effect",
+      "engine mounts"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "FAA AC 33.75-1A \u00a7 33.75(g)(1) and EASA CS-E 510 (definition of Major Engine Effects: controlled in-flight shutdown, partial power loss)."
+  },
+  {
+    "query_id": "RET-31",
+    "query": "MIL-STD-1629A loss of primary mission operational degradation marginal minor classification",
+    "category": "severity",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "MIL-STD-1629A.pdf"
+    ],
+    "relevant_pages": [
+      16,
+      19
+    ],
+    "relevant_topics": [
+      "mission loss",
+      "marginal",
+      "minor",
+      "severity categories"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "MIL-STD-1629A \u00a7 4.4.3.c (Severity Category III - Marginal definition: minor system damage without injury)."
+  },
+  {
+    "query_id": "RET-32",
+    "query": "fan blade containment casing design test blade fragment containment ring",
+    "category": "blade fracture",
+    "query_type": "evaluable",
+    "corpus_gap": false,
+    "relevant_documents": [
+      "FAA_AC_33.75-1A.pdf",
+      "EASA_CS-E_Amnd5_EasyAccessRules.pdf"
+    ],
+    "relevant_pages": [
+      11,
+      102
+    ],
+    "relevant_topics": [
+      "containment ring",
+      "blade fragment",
+      "casing containment"
+    ],
+    "ground_truth_granularity": "page",
+    "ground_truth_basis": "FAA AC 33.75-1A \u00a7 33.75(e) and EASA CS-E 810 (rotor burst fragment deflection and containment ring impact dynamics)."
+  }
+]
